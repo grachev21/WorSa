@@ -1,0 +1,3 @@
+class ContinueTraining:
+
+    pass
