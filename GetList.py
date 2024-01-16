@@ -1,11 +1,12 @@
 import subprocess
-import tqdm
 import json
 import time
 import enchant
+from progress.bar import IncrementalBar
 from colorama import init
 from colorama import Fore
 
+init()
 
 class GetList:
 
@@ -41,21 +42,31 @@ class GetList:
         return list_word
 
     def parsing_terminal(self, list_word):
-        subprocess.run('clear', shell=True)
-        name_dict = str(input('Введите название словаря: '))
+
         subprocess.run('clear', shell=True)
 
-        print(f'{Fore.RED}Згрузка данных')
-        print()
+        
+        list_to_json = []
 
-        for lw in tqdm.tqdm(list_word):
+        bar = IncrementalBar('Создание словаря', max = len(list_word))
+
+        print(f'{Fore.RESET}Згрузка данных')
+        for lw in list_word:
+            bar.next()
+            
             result = subprocess.run(f'trans -b en:ru {lw}', shell=True, stdout=subprocess.PIPE)
             result_out = result.stdout.decode('utf-8').rstrip()
 
-            to_json = {
-                'en_word': lw,
-                'ru_word': result_out
-            }
+            if type(result_out) == str:
+                to_json = {
+                    'en_word': lw,
+                    'ru_word': result_out
+                }
 
-            with open(f'{name_dict}.json', 'a') as f:
-                json.dump(to_json, f, sort_keys=True, indent=2, ensure_ascii=False)
+                list_to_json.append(to_json)
+
+            # if len(list_to_json) == 20:
+            #     break
+
+        with open('file_json/my_dict.json', 'w') as f:
+            json.dump(list_to_json, f, sort_keys=True, indent=2, ensure_ascii=False)
