@@ -83,7 +83,7 @@ class ContinueTraining:
         print()
 
         try:
-            result_user = int(input(Fore.LIGHTBLUE_EX+f'Выберите вариант {Fore.WHITE} 1, 2, 3, 4: {Fore.LIGHTMAGENTA_EX}'))
+            result_user = int(input(Fore.LIGHTBLUE_EX+f'Выберите вариант {Fore.WHITE}'))
             if list_test[result_user-1] == right_word['en_word']:
                 return True
             else:
@@ -102,7 +102,7 @@ class ContinueTraining:
 
 ContinueTraining().create_lists()
 count_words = ContinueTraining().count_words()
-right_word, random_word = ContinueTraining().random_list_and_true_word()
 while True:
+    right_word, random_word = ContinueTraining().random_list_and_true_word()
     if ContinueTraining().tests(right_word, random_word):
         PrintTraining(right_word['en_word'], right_word['ru_word'], count_words).training()
