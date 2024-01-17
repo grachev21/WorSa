@@ -1,0 +1,54 @@
+import json
+import subprocess
+from colorama import init
+from colorama import Fore
+
+init()
+
+class PrintTraining:
+
+    def __init__(self, en_word, ru_word, count_words):
+        self.en_word = en_word
+        self.ru_word = ru_word
+        self.count_words = count_words
+
+    def training(self):
+
+        while True:
+            subprocess.run('clear', shell=True)
+            print(Fore.GREEN+'Введите слово', Fore.YELLOW+str(self.en_word))
+            print()
+            check_en = input(Fore.RED+' --> : ')
+            if check_en != self.en_word:
+                continue
+            print()
+            print(Fore.GREEN+'Введите слово', Fore.YELLOW+str(self.ru_word))
+            print()
+            check_ru = input(Fore.RED+' --> : ')
+            if check_ru != self.ru_word:
+                continue
+            else:
+                print(self.count_words)
+                input()
+                for cw in self.count_words:
+                    if cw['en_word'] == self.en_word and cw['status'] != 4:
+                        cw['status'] += 1
+                        print(self.count_words)
+                        input()
+                        if cw['status'] == 4:
+                            self.count_words.remove(cw)
+
+                            with open('./file_json/gussed_words.json', 'r') as file:
+                                gussed_words = json.load(file)
+                            
+                            gussed_words.append(cw)
+
+                            with open('./file_json/gussed_words.json', 'w') as file:
+                                json.dump(gussed_words, file, sort_keys=True, indent=2, ensure_ascii=False)
+
+                
+                    with open('./file_json/count_words.json', 'w') as file:
+                        json.dump(self.count_words, file, sort_keys=True, indent=2, ensure_ascii=False)
+                break
+
+

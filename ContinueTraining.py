@@ -1,7 +1,15 @@
 import json 
 import os
-# import random
+import random
+import subprocess
+from colorama import init
+from colorama import Fore
 
+from PrintTraining import PrintTraining
+
+
+# colorama
+init()
 
 class ContinueTraining:
 
@@ -13,66 +21,88 @@ class ContinueTraining:
             with open(f'./file_json/{name}.json', 'r') as file:
                 return json.load(file)
 
-    def count_words(self):
-        word_list = []
-        number = 0
+    def create_lists(self):
+        '''Creates the right file if they are not'''
 
         if not os.path.isfile('./file_json/gussed_words.json'):
             self.record_read('gussed_words', [], 'record')
-        
-        if not os.path.isfile('./fiile_json/count_words.json'):
+
+        if not os.path.isfile('./file_json/count_words.json'):
             self.record_read('count_words', [], 'record')
 
-        # Получаем накопительный список
+    def count_words(self):
+        '''Creates json with the words that you need to guess'''
+
+        word_list = []
+        number = 0
+
+        # We get a cumulative list for guessed words
         gussed_words = self.record_read('gussed_words', None, 'read')
-
-        # Получаем настройки
+        # We get the settings
         number_word = self.record_read('settings', None, 'read')['number_word']
-
-        # Получаем все слова
+        # We get all the words
         my_dict = self.record_read('my_dict', None, 'read')
+        # Temporary base of words
+        count_words = self.record_read('count_words', None, 'read')
 
-
-        while len(word_list) <= number_word:
-            if my_dict[number] not in gussed_words:
-                append_dict = my_dict[number]
-                append_dict['status'] = 0
-                word_list.append(append_dict)
-            number += 1
-        print(word_list)
-        
-        return self.record_read('count_words', word_list, 'record')
+        if len(count_words) == 0:
+            while len(word_list) <= number_word:
+                if my_dict[number] not in gussed_words:
+                    append_dict = my_dict[number]
+                    append_dict['status'] = 0
+                    word_list.append(append_dict)
+                number += 1
+            self.record_read('count_words', word_list, 'record')
+            return word_list
+        else:
+            return count_words
             
+    def random_list_and_true_word(self):
+
+        right_word = self.record_read('count_words', None, 'read')[-1]
+        my_dict = self.record_read('my_dict', None, 'read')
+        without_right_word = [md for md in my_dict if md['en_word'] != right_word['en_word']]
+        random_word = random.sample(without_right_word, 3)
+
+        return right_word, random_word
+
+    def tests(self, right_word, random_word):
+
+        # We get a list of tests
+        list_test = random.sample([rw['en_word'] for rw in random_word] + [right_word['en_word']], 4)
         
-        
-        
-        
-        # if not os.path.isfile('./file_json/count_words.json'):
-        #     with open('./file_json/count_words.json', 'w') as f:
-        #         json.dump(word_list, f, sort_keys=True, indent=2, ensure_ascii=False)
-        # else:
-        #     with open('./file_json/count_words.json', 'r') as count_words:
-        #         pass
+        subprocess.run('clear', shell=True)
+        print('*'*80)
+        print()
+        print(Fore.LIGHTYELLOW_EX+' -->', Fore.GREEN+ '[', str(right_word['ru_word']), ']')
+        print()
+        print(Fore.LIGHTYELLOW_EX+' -->', Fore.WHITE+'1 -', Fore.LIGHTMAGENTA_EX+list_test[0])
+        print(Fore.LIGHTYELLOW_EX+' -->', Fore.WHITE+'2 -', Fore.LIGHTMAGENTA_EX+list_test[1])
+        print(Fore.LIGHTYELLOW_EX+' -->', Fore.WHITE+'3 -', Fore.LIGHTMAGENTA_EX+list_test[2])
+        print(Fore.LIGHTYELLOW_EX+' -->', Fore.WHITE+'4 -', Fore.LIGHTMAGENTA_EX+list_test[3])
+        print()
+
+        try:
+            result_user = int(input(Fore.LIGHTBLUE_EX+f'Выберите вариант {Fore.WHITE} 1, 2, 3, 4: {Fore.LIGHTMAGENTA_EX}'))
+            if list_test[result_user-1] == right_word['en_word']:
+                return True
+            else:
+                subprocess.run('clear', shell=True)
+                print(Fore.RED+'*'*80)
+                print()
+                print(Fore.RED+'ВАШ ОТВЕТ НЕ ВЕРНЫЙ!!!')
+                print()
+                input(Fore.LIGHTGREEN_EX+'Нажмите Enter чтобы продолжить')
+        except Exception:
+            subprocess.run('clear', shell=True)
+            print(Fore.RED+'Вы можете ввести только 1, 2, 3 или 4')
+            print()
+            input(Fore.GREEN+'Нажмите Enter чтобы продолжить')
 
 
-        # print(check)
-
-        # with open('file_json/count_words.json', 'r') as file:
-            # templates = json.load(file)
-        # print(len(templates))
-
-
-    def random_list(self):
-
-        with open('file_json/my_dict.json', 'r') as file:
-            templates = json.load(file)
-
-        # print(templates)
-
-        input('Выберите вариант: ')
-
-        # random_word = random.randrange()
-
-
-ContinueTraining().random_list()
-ContinueTraining().count_words()
+ContinueTraining().create_lists()
+count_words = ContinueTraining().count_words()
+right_word, random_word = ContinueTraining().random_list_and_true_word()
+while True:
+    if ContinueTraining().tests(right_word, random_word):
+        PrintTraining(right_word['en_word'], right_word['ru_word'], count_words).training()
