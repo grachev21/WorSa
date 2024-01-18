@@ -9,6 +9,7 @@ from GetList import GetList
 from settings import Settings
 from ContinueTraining import ContinueTraining
 from Restart import Restart
+from PrintTraining import PrintTraining
 
 # colorama
 init()
@@ -38,8 +39,20 @@ def main():
         elif value == 2:
             Restart().restart()
         elif value == 3:
-            subprocess.run('clear', shell=True)
-            ContinueTraining().create_word_list()
+
+            ContinueTraining().create_lists()
+            count_words = ContinueTraining().count_words()
+            while True:
+                # right_word, random_word = ContinueTraining().random_list_and_true_word()
+                data = ContinueTraining().random_list_and_true_word()
+                if data == 'exit':
+                    break
+                check = ContinueTraining().tests(data[0], data[1])
+                if check == 'right':
+                    PrintTraining(data[0]['en_word'], data[0]['ru_word'], count_words).training()
+                if check == 'exit':
+                    break
+
         elif value == 4:
             subprocess.run('clear', shell=True)
             Settings().settings()

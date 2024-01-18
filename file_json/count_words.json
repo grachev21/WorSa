@@ -28,5 +28,480 @@
     "en_word": "emulating",
     "ru_word": "подражание",
     "status": 0
+  },
+  {
+    "en_word": "history",
+    "ru_word": "история",
+    "status": 0
+  },
+  {
+    "en_word": "faking",
+    "ru_word": "притворяться",
+    "status": 0
+  },
+  {
+    "en_word": "through",
+    "ru_word": "через",
+    "status": 0
+  },
+  {
+    "en_word": "presented",
+    "ru_word": "представлен",
+    "status": 0
+  },
+  {
+    "en_word": "unchanged",
+    "ru_word": "неизменный",
+    "status": 0
+  },
+  {
+    "en_word": "download",
+    "ru_word": "скачать",
+    "status": 0
+  },
+  {
+    "en_word": "ancient",
+    "ru_word": "древний",
+    "status": 0
+  },
+  {
+    "en_word": "changeling",
+    "ru_word": "подменыш",
+    "status": 0
+  },
+  {
+    "en_word": "describe",
+    "ru_word": "описывать",
+    "status": 0
+  },
+  {
+    "en_word": "broadly",
+    "ru_word": "широко",
+    "status": 0
+  },
+  {
+    "en_word": "mock",
+    "ru_word": "насмехаться",
+    "status": 0
+  },
+  {
+    "en_word": "role",
+    "ru_word": "роль",
+    "status": 0
+  },
+  {
+    "en_word": "used",
+    "ru_word": "использовал",
+    "status": 0
+  },
+  {
+    "en_word": "allowing",
+    "ru_word": "позволяя",
+    "status": 0
+  },
+  {
+    "en_word": "untested",
+    "ru_word": "непроверенный",
+    "status": 0
+  },
+  {
+    "en_word": "creating",
+    "ru_word": "создание",
+    "status": 0
+  },
+  {
+    "en_word": "grateful",
+    "ru_word": "благодарный",
+    "status": 0
+  },
+  {
+    "en_word": "locust",
+    "ru_word": "саранча",
+    "status": 0
+  },
+  {
+    "en_word": "cough",
+    "ru_word": "кашель",
+    "status": 0
+  },
+  {
+    "en_word": "architecture",
+    "ru_word": "архитектура",
+    "status": 0
+  },
+  {
+    "en_word": "primary",
+    "ru_word": "начальный",
+    "status": 0
+  },
+  {
+    "en_word": "integer",
+    "ru_word": "целое число",
+    "status": 0
+  },
+  {
+    "en_word": "meant",
+    "ru_word": "имел в виду",
+    "status": 0
+  },
+  {
+    "en_word": "fail",
+    "ru_word": "неудача",
+    "status": 0
+  },
+  {
+    "en_word": "avoid",
+    "ru_word": "избегать",
+    "status": 0
+  },
+  {
+    "en_word": "endorsed",
+    "ru_word": "одобренный",
+    "status": 0
+  },
+  {
+    "en_word": "dependency",
+    "ru_word": "зависимость",
+    "status": 0
+  },
+  {
+    "en_word": "normal",
+    "ru_word": "нормальный",
+    "status": 0
+  },
+  {
+    "en_word": "wash",
+    "ru_word": "стирать",
+    "status": 0
+  },
+  {
+    "en_word": "prove",
+    "ru_word": "доказывать",
+    "status": 0
+  },
+  {
+    "en_word": "except",
+    "ru_word": "кроме",
+    "status": 0
+  },
+  {
+    "en_word": "forward",
+    "ru_word": "вперед",
+    "status": 0
+  },
+  {
+    "en_word": "several",
+    "ru_word": "несколько",
+    "status": 0
+  },
+  {
+    "en_word": "learning",
+    "ru_word": "обучение",
+    "status": 0
+  },
+  {
+    "en_word": "minimal",
+    "ru_word": "минимальный",
+    "status": 0
+  },
+  {
+    "en_word": "tracking",
+    "ru_word": "отслеживание",
+    "status": 0
+  },
+  {
+    "en_word": "video",
+    "ru_word": "видео",
+    "status": 0
+  },
+  {
+    "en_word": "during",
+    "ru_word": "в течение",
+    "status": 0
+  },
+  {
+    "en_word": "demo",
+    "ru_word": "демо",
+    "status": 0
+  },
+  {
+    "en_word": "imported",
+    "ru_word": "импортированный",
+    "status": 0
+  },
+  {
+    "en_word": "though",
+    "ru_word": "хотя",
+    "status": 0
+  },
+  {
+    "en_word": "fix",
+    "ru_word": "исправить",
+    "status": 0
+  },
+  {
+    "en_word": "essentially",
+    "ru_word": "по сути",
+    "status": 0
+  },
+  {
+    "en_word": "hexagonal",
+    "ru_word": "шестиугольный",
+    "status": 0
+  },
+  {
+    "en_word": "other",
+    "ru_word": "другой",
+    "status": 0
+  },
+  {
+    "en_word": "shell",
+    "ru_word": "оболочка",
+    "status": 0
+  },
+  {
+    "en_word": "protect",
+    "ru_word": "защищать",
+    "status": 0
+  },
+  {
+    "en_word": "nasty",
+    "ru_word": "противный",
+    "status": 0
+  },
+  {
+    "en_word": "release",
+    "ru_word": "выпускать",
+    "status": 0
+  },
+  {
+    "en_word": "not",
+    "ru_word": "нет",
+    "status": 0
+  },
+  {
+    "en_word": "dash",
+    "ru_word": "бросаться",
+    "status": 0
+  },
+  {
+    "en_word": "reason",
+    "ru_word": "причина",
+    "status": 0
+  },
+  {
+    "en_word": "whom",
+    "ru_word": "кому",
+    "status": 0
+  },
+  {
+    "en_word": "sidestep",
+    "ru_word": "обходить стороной",
+    "status": 0
+  },
+  {
+    "en_word": "should",
+    "ru_word": "должен",
+    "status": 0
+  },
+  {
+    "en_word": "layered",
+    "ru_word": "слоистый",
+    "status": 0
+  },
+  {
+    "en_word": "assigning",
+    "ru_word": "назначение",
+    "status": 0
+  },
+  {
+    "en_word": "extra",
+    "ru_word": "дополнительный",
+    "status": 0
+  },
+  {
+    "en_word": "country",
+    "ru_word": "страна",
+    "status": 0
+  },
+  {
+    "en_word": "bray",
+    "ru_word": "реветь",
+    "status": 0
+  },
+  {
+    "en_word": "import",
+    "ru_word": "Импортировать",
+    "status": 0
+  },
+  {
+    "en_word": "test",
+    "ru_word": "тест",
+    "status": 0
+  },
+  {
+    "en_word": "value",
+    "ru_word": "ценить",
+    "status": 0
+  },
+  {
+    "en_word": "butter",
+    "ru_word": "масло",
+    "status": 0
+  },
+  {
+    "en_word": "hill",
+    "ru_word": "холм",
+    "status": 0
+  },
+  {
+    "en_word": "outside",
+    "ru_word": "снаружи",
+    "status": 0
+  },
+  {
+    "en_word": "antique",
+    "ru_word": "античный",
+    "status": 0
+  },
+  {
+    "en_word": "warn",
+    "ru_word": "предупреждать",
+    "status": 0
+  },
+  {
+    "en_word": "ignore",
+    "ru_word": "игнорировать",
+    "status": 0
+  },
+  {
+    "en_word": "share",
+    "ru_word": "делиться",
+    "status": 0
+  },
+  {
+    "en_word": "local",
+    "ru_word": "местный",
+    "status": 0
+  },
+  {
+    "en_word": "along",
+    "ru_word": "вдоль",
+    "status": 0
+  },
+  {
+    "en_word": "vertical",
+    "ru_word": "вертикальный",
+    "status": 0
+  },
+  {
+    "en_word": "clean",
+    "ru_word": "чистый",
+    "status": 0
+  },
+  {
+    "en_word": "environment",
+    "ru_word": "среда",
+    "status": 0
+  },
+  {
+    "en_word": "expression",
+    "ru_word": "выражение",
+    "status": 0
+  },
+  {
+    "en_word": "actually",
+    "ru_word": "на самом деле",
+    "status": 0
+  },
+  {
+    "en_word": "exhaustion",
+    "ru_word": "истощение",
+    "status": 0
+  },
+  {
+    "en_word": "saw",
+    "ru_word": "пила",
+    "status": 0
+  },
+  {
+    "en_word": "shiny",
+    "ru_word": "блестящий",
+    "status": 0
+  },
+  {
+    "en_word": "massive",
+    "ru_word": "массивный",
+    "status": 0
+  },
+  {
+    "en_word": "like",
+    "ru_word": "нравиться",
+    "status": 0
+  },
+  {
+    "en_word": "hallowed",
+    "ru_word": "освященный",
+    "status": 0
+  },
+  {
+    "en_word": "review",
+    "ru_word": "обзор",
+    "status": 0
+  },
+  {
+    "en_word": "argument",
+    "ru_word": "аргумент",
+    "status": 0
+  },
+  {
+    "en_word": "distributed",
+    "ru_word": "распределенный",
+    "status": 0
+  },
+  {
+    "en_word": "messaging",
+    "ru_word": "обмен сообщениями",
+    "status": 0
+  },
+  {
+    "en_word": "acronym",
+    "ru_word": "акроним",
+    "status": 0
+  },
+  {
+    "en_word": "arise",
+    "ru_word": "возникать",
+    "status": 0
+  },
+  {
+    "en_word": "keeping",
+    "ru_word": "сохранение",
+    "status": 0
+  },
+  {
+    "en_word": "currently",
+    "ru_word": "в настоящее время",
+    "status": 0
+  },
+  {
+    "en_word": "real",
+    "ru_word": "настоящий",
+    "status": 0
+  },
+  {
+    "en_word": "moldy",
+    "ru_word": "заплесневелый",
+    "status": 0
+  },
+  {
+    "en_word": "string",
+    "ru_word": "нить",
+    "status": 0
+  },
+  {
+    "en_word": "preemptive",
+    "ru_word": "упреждающий",
+    "status": 0
   }
 ]

@@ -2,10 +2,10 @@ import json
 import subprocess
 from colorama import init
 from colorama import Fore
-
 from SoundText import sound
 
 init()
+
 
 class PrintTraining:
 
@@ -21,13 +21,13 @@ class PrintTraining:
 
             sound(self.en_word)
 
-            print(Fore.GREEN+'Введите слово --> ', Fore.YELLOW+str(self.en_word))
+            print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.en_word))
             print()
             check_en = input(f'{Fore.RED} --> : {Fore.WHITE}')
             if check_en != self.en_word:
                 continue
             print()
-            print(Fore.GREEN+'Введите слово --> ', Fore.YELLOW+str(self.ru_word))
+            print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.ru_word))
             print()
             check_ru = input(f'{Fore.RED} --> : {Fore.WHITE}')
             if check_ru != self.ru_word:
@@ -41,7 +41,7 @@ class PrintTraining:
 
                             with open('./file_json/gussed_words.json', 'r') as file:
                                 gussed_words = json.load(file)
-                            
+
                             gussed_words.append(cw)
 
                             with open('./file_json/gussed_words.json', 'w') as file:
