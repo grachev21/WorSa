@@ -3,6 +3,7 @@ import subprocess
 from colorama import init
 from colorama import Fore
 from SoundText import sound
+from record_read import record_read
 
 init()
 
@@ -34,9 +35,11 @@ class PrintTraining:
                 continue
             else:
                 for cw in self.count_words:
-                    if cw['en_word'] == self.en_word and cw['status'] != 4:
+                    loop = record_read('loop', None, 'read')['number_loop']
+                    
+                    if cw['en_word'] == self.en_word and cw['status'] != loop:
                         cw['status'] += 1
-                        if cw['status'] == 4:
+                        if cw['status'] == loop:
                             self.count_words.remove(cw)
 
                             with open('./file_json/gussed_words.json', 'r') as file:

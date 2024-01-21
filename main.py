@@ -37,7 +37,10 @@ def main():
             else:
                 GetList().parsing_terminal(list_word)
         elif value == 2:
-            Restart().restart()
+            try:
+                Restart().restart()
+            except KeyboardInterrupt:
+                pass
         elif value == 3:
 
             ContinueTraining().create_lists()
@@ -54,14 +57,21 @@ def main():
                     break
 
         elif value == 4:
-            subprocess.run('clear', shell=True)
-            Settings().settings()
+            while True:
+                try:
+                    subprocess.run('clear', shell=True)
+                    Settings().settings()
+                    break
+                except ValueError:
+                    subprocess.run('clear', shell=True)
+                    input('Вводить можно тлько цифры Enter')
+                except KeyboardInterrupt:
+                    continue
         elif value == 5:
-            pass
-        elif value == 6:
             subprocess.run('clear', shell=True)
             exit()
 
 
 if '__main__' == __name__:
+
     main()

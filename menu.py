@@ -11,11 +11,10 @@ class Menu:
         check = True
         while check:
             print(Fore.RED + '1 - Создать словарь')
-            print(Fore.RED + '2 - Сброс данных словаря')
-            print(Fore.YELLOW + '3 - Продолжить обучение')
+            print(Fore.LIGHTYELLOW_EX+ '2 - Сброс данных словаря')
+            print(Fore.LIGHTBLUE_EX+ '3 - Тестирование')
             print(Fore.GREEN + '4 - Настройки')
-            print(Fore.LIGHTBLUE_EX + '5 - Выбрать готовый словарь')
-            print(Fore.RED+ '6 - Выход')
+            print(Fore.LIGHTCYAN_EX+ '5 - Выход')
             print()
             try:
                 value = int(input(f'{Fore.WHITE}Выберите вариант и нажмите Enter: {Fore.GREEN}'))

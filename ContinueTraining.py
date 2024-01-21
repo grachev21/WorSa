@@ -72,15 +72,16 @@ class ContinueTraining:
             message.append(f"{Fore.LIGHTYELLOW_EX}--> {Fore.WHITE} {count} - {Fore.LIGHTMAGENTA_EX}{lt}")
             count += 1
 
-        print('\n' + '*' * 80)
+        print(Fore.WHITE + '*' * 80)
         print(Fore.RED + 'Всего слов: ', len(record_read('my_dict', None, 'read')))
         print(Fore.RED + 'Выучено: ', len(record_read('gussed_words', None, 'read')))
         print(Fore.RED + 'Осталось за день: ', len(record_read('count_words', None, 'read')))
         print(Fore.RED + 'Настройки слов: ', (record_read('settings', None, 'read')['number_word']))
+        print(Fore.RED + 'Количество повторов набора текста: ', (record_read('loop', None, 'read')['number_loop']))
         print(Fore.RED + 'Осталось выучить: ', len(record_read('my_dict', None, 'read')) - len(record_read('gussed_words', None, 'read')))
 
         print(Fore.RESET + '*' * 80)
-        print(Fore.RED + "Чтобы выйти введите '0'\n\n")
+        print(Fore.YELLOW + "Чтобы выйти введите '0'\n\n")
         print(f"{Fore.LIGHTYELLOW_EX}--> {Fore.GREEN} [{right_word['ru_word']}]")
         print()
         for me in message:
@@ -100,12 +101,12 @@ class ContinueTraining:
                 print()
                 print(Fore.LIGHTYELLOW_EX + 'Правильное слово: ', Fore.WHITE + right_word['en_word'])
                 print()
-                input(Fore.LIGHTGREEN_EX + 'Нажмите Enter чтобы продолжить')
-        except Exception:
+                input(Fore.LIGHTGREEN_EX + 'Нажмите Enter чтобы продолжить: ')
+        except:
             subprocess.run('clear', shell=True)
             print(Fore.RED + 'Вы можете ввести только 1, 2, 3 или 4')
             print()
             input(Fore.GREEN + 'Нажмите Enter чтобы продолжить')
 
 
-    
+
