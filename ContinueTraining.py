@@ -24,8 +24,6 @@ class ContinueTraining:
     def count_words(self):
         '''Creates json with the words that you need to guess'''
 
-        word_list = []
-        number = 0
 
         # We get a cumulative list for guessed words
         gussed_words = record_read('gussed_words', None, 'read')
@@ -36,13 +34,15 @@ class ContinueTraining:
         # Temporary base of words
         count_words = record_read('count_words', None, 'read')
 
+        word_list = []
+        number = 1
         if len(count_words) == 0:
-            while len(word_list) <= number_word:
+            while len(word_list) != number_word:
+                number += 1
                 if my_dict[number] not in gussed_words:
                     append_dict = my_dict[number]
                     append_dict['status'] = 0
                     word_list.append(append_dict)
-                number += 1
             record_read('count_words', word_list, 'record')
             return word_list
         else:
@@ -88,7 +88,7 @@ class ContinueTraining:
             print(me)
 
         try:
-            result_user = int(input(Fore.LIGHTBLUE_EX + f'\nВыберите вариант:  {Fore.WHITE}'))
+            result_user = int(input(Fore.LIGHTBLUE_EX + f'\nВыберите вариант:  {Fore.RED}'))
             if result_user == 0:
                 return 'exit'
             if list_test[result_user - 1] == right_word['en_word']:
@@ -101,7 +101,7 @@ class ContinueTraining:
                 print()
                 print(Fore.LIGHTYELLOW_EX + 'Правильное слово: ', Fore.WHITE + right_word['en_word'])
                 print()
-                input(Fore.LIGHTGREEN_EX + 'Нажмите Enter чтобы продолжить: ')
+                input(Fore.LIGHTGREEN_EX + f'Нажмите Enter чтобы продолжить: {Fore.RED}')
         except:
             subprocess.run('clear', shell=True)
             print(Fore.RED + 'Вы можете ввести только 1, 2, 3 или 4')

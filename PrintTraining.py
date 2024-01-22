@@ -24,13 +24,13 @@ class PrintTraining:
 
             print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.en_word))
             print()
-            check_en = input(f'{Fore.RED} --> : {Fore.WHITE}')
+            check_en = input(f'{Fore.RED} --> : {Fore.RED}')
             if check_en != self.en_word:
                 continue
             print()
             print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.ru_word))
             print()
-            check_ru = input(f'{Fore.RED} --> : {Fore.WHITE}')
+            check_ru = input(f'{Fore.RED} --> : {Fore.RED}')
             if check_ru != self.ru_word:
                 continue
             else:

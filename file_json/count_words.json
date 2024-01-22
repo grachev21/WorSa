@@ -1,10 +1,5 @@
 [
   {
-    "en_word": "low",
-    "ru_word": "низкий",
-    "status": 0
-  },
-  {
     "en_word": "different",
     "ru_word": "другой",
     "status": 0
@@ -12,16 +7,6 @@
   {
     "en_word": "managed",
     "ru_word": "удалось",
-    "status": 0
-  },
-  {
-    "en_word": "fit",
-    "ru_word": "соответствовать",
-    "status": 1
-  },
-  {
-    "en_word": "emulating",
-    "ru_word": "подражание",
     "status": 0
   }
 ]

@@ -17,7 +17,7 @@ class Menu:
             print(Fore.LIGHTCYAN_EX+ '5 - Выход')
             print()
             try:
-                value = int(input(f'{Fore.WHITE}Выберите вариант и нажмите Enter: {Fore.GREEN}'))
+                value = int(input(f'{Fore.WHITE}Выберите вариант и нажмите Enter: {Fore.RED}'))
                 if value > 6:
                     subprocess.run('clear', shell=True)
                 else:

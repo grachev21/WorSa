@@ -1,7 +1,12 @@
 [
   {
-    "en_word": "might",
-    "ru_word": "мощь",
+    "en_word": "managed",
+    "ru_word": "удалось",
+    "status": 2
+  },
+  {
+    "en_word": "different",
+    "ru_word": "другой",
     "status": 2
   }
 ]

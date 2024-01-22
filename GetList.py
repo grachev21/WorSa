@@ -12,12 +12,12 @@ class GetList:
 
     def get_list(self):
         list_word = set()
-        dictionary = enchant.Dict("en_US")
+        dictionary = enchant.Dict('en_US')
 
         while True:
             try:
                 print()
-                link = input(f'{Fore.BLUE}Укажите путь до текстового файла или {Fore.RED}b{Fore.BLUE} чтобы выйте: {Fore.GREEN}')
+                link = input(f'{Fore.BLUE}Укажите путь до текстового файла или {Fore.RED}b{Fore.BLUE} чтобы выйте: {Fore.RED}')
 
                 if link == 'b':
                     check = 'back'
