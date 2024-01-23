@@ -66,7 +66,7 @@ def main():
                     subprocess.run('clear', shell=True)
                     input('Вводить можно тлько цифры Enter')
                 except KeyboardInterrupt:
-                    continue
+                    break
         elif value == 5:
             subprocess.run('clear', shell=True)
             exit()

@@ -1,12 +1,127 @@
 [
   {
-    "en_word": "managed",
-    "ru_word": "удалось",
-    "status": 2
+    "en_word": "bigger",
+    "ru_word": "больше",
+    "status": 20
   },
   {
-    "en_word": "different",
-    "ru_word": "другой",
-    "status": 2
+    "en_word": "message",
+    "ru_word": "сообщение",
+    "status": 20
+  },
+  {
+    "en_word": "worksheet",
+    "ru_word": "рабочий лист",
+    "status": 20
+  },
+  {
+    "en_word": "come",
+    "ru_word": "приходить",
+    "status": 20
+  },
+  {
+    "en_word": "perfect",
+    "ru_word": "идеальный",
+    "status": 20
+  },
+  {
+    "en_word": "your",
+    "ru_word": "твой",
+    "status": 20
+  },
+  {
+    "en_word": "wide",
+    "ru_word": "широкий",
+    "status": 20
+  },
+  {
+    "en_word": "location",
+    "ru_word": "расположение",
+    "status": 20
+  },
+  {
+    "en_word": "beauty",
+    "ru_word": "красота",
+    "status": 20
+  },
+  {
+    "en_word": "customizing",
+    "ru_word": "настройка",
+    "status": 20
+  },
+  {
+    "en_word": "refuse",
+    "ru_word": "мусор",
+    "status": 20
+  },
+  {
+    "en_word": "letting",
+    "ru_word": "сдача в аренду",
+    "status": 20
+  },
+  {
+    "en_word": "capable",
+    "ru_word": "способный",
+    "status": 20
+  },
+  {
+    "en_word": "display",
+    "ru_word": "отображать",
+    "status": 20
+  },
+  {
+    "en_word": "random",
+    "ru_word": "случайный",
+    "status": 20
+  },
+  {
+    "en_word": "weird",
+    "ru_word": "странный",
+    "status": 20
+  },
+  {
+    "en_word": "interpolate",
+    "ru_word": "интерполировать",
+    "status": 20
+  },
+  {
+    "en_word": "securing",
+    "ru_word": "обеспечение",
+    "status": 20
+  },
+  {
+    "en_word": "correctly",
+    "ru_word": "правильно",
+    "status": 20
+  },
+  {
+    "en_word": "serve",
+    "ru_word": "служить",
+    "status": 20
+  },
+  {
+    "en_word": "creating",
+    "ru_word": "создание",
+    "status": 20
+  },
+  {
+    "en_word": "learning",
+    "ru_word": "обучение",
+    "status": 20
+  },
+  {
+    "en_word": "flesh",
+    "ru_word": "плоть",
+    "status": 20
+  },
+  {
+    "en_word": "history",
+    "ru_word": "история",
+    "status": 20
+  },
+  {
+    "en_word": "launching",
+    "ru_word": "запуск",
+    "status": 20
   }
 ]
