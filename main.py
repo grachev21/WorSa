@@ -10,6 +10,8 @@ from settings import Settings
 from ContinueTraining import ContinueTraining
 from Restart import Restart
 from PrintTraining import PrintTraining
+from RepeatWords import RepeatWords
+
 
 # colorama
 init()
@@ -57,6 +59,26 @@ def main():
                     break
 
         elif value == 4:
+
+            gussed_words = RepeatWords().get_gussed_words()
+
+            while True:
+
+                *value, = RepeatWords().repeat(gussed_words[0])
+
+                if value[0] == 'guessed':
+                    gussed_words.remove(value[1])
+                    RepeatWords().training(value[1]['en_word'], value[1]['ru_word'])
+                if value[0] == 'not_guess' or value[0] == 'error':
+                    continue
+                if value[0] == 'exit':
+                    break
+                if len(gussed_words) == 0:
+                    subprocess.run('clear', shell=True)
+                    print('Вы повторили все слова!!!\n')
+                    input('--> Enter')
+
+        elif value == 5:
             while True:
                 try:
                     subprocess.run('clear', shell=True)
@@ -67,7 +89,7 @@ def main():
                     input('Вводить можно тлько цифры Enter')
                 except KeyboardInterrupt:
                     break
-        elif value == 5:
+        elif value == 6:
             subprocess.run('clear', shell=True)
             exit()
 

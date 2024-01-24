@@ -13,12 +13,13 @@ class Menu:
             print(Fore.RED + '1 - Создать словарь')
             print(Fore.LIGHTYELLOW_EX+ '2 - Сброс данных словаря')
             print(Fore.LIGHTBLUE_EX+ '3 - Тестирование')
-            print(Fore.GREEN + '4 - Настройки')
-            print(Fore.LIGHTCYAN_EX+ '5 - Выход')
+            print(Fore.LIGHTMAGENTA_EX+ '4 - Повтор слов')
+            print(Fore.GREEN + '5 - Настройки')
+            print(Fore.LIGHTCYAN_EX + '6 - Выход')
             print()
             try:
                 value = int(input(f'{Fore.WHITE}Выберите вариант и нажмите Enter: {Fore.RED}'))
-                if value > 6:
+                if value > 7:
                     subprocess.run('clear', shell=True)
                 else:
                     check = False

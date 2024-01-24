@@ -4,20 +4,15 @@ import subprocess
 from colorama import init
 from colorama import Fore
 from prettytable import PrettyTable
-
 from record_read import record_read
 from CountPrint import count_print
 from LoadPrint import load
 
-# colorama
+
 init()
 
-
 class ContinueTraining:
-
     def create_lists(self):
-        '''Creates the right file if they are not'''
-
         if not os.path.isfile('./file_json/gussed_words.json'):
             self.record_read('gussed_words', [], 'record')
 
@@ -25,16 +20,8 @@ class ContinueTraining:
             self.record_read('count_words', [], 'record')
 
     def count_words(self):
-        '''Creates json with the words that you need to guess'''
-
-
-        # We get a cumulative list for guessed words
-        gussed_words = record_read('gussed_words', None, 'read')
-        # We get the settings
         number_word = record_read('settings', None, 'read')['number_word']
-        # We get all the words
         my_dict = record_read('my_dict', None, 'read')
-        # Temporary base of words
         count_words = record_read('count_words', None, 'read')
 
         word_list = []
@@ -63,8 +50,6 @@ class ContinueTraining:
             return 'exit'
 
     def tests(self, right_word, random_word):
-
-        # We get a list of tests
         list_test = random.sample([rw['en_word'] for rw in random_word] + [right_word['en_word']], 9)
         subprocess.run('clear', shell=True)
         print(Fore.WHITE + '*' * 80)
@@ -77,13 +62,11 @@ class ContinueTraining:
         print(Fore.LIGHTYELLOW_EX)
         load()
         print()
-
         print(Fore.RESET + '*' * 80)
         print()
         print(Fore.YELLOW + "Чтобы выйти введите '0'\n\n")
         print(f"{Fore.LIGHTYELLOW_EX}--> {Fore.GREEN} [{right_word['ru_word']}]")
         print()
-
         mytable = PrettyTable()
         mytable.header = False
         mytable.align = 'l'
@@ -100,7 +83,6 @@ class ContinueTraining:
 
         print(mytable)
         print()
-
         try:
             result_user = int(input(Fore.LIGHTBLUE_EX + f'\nВыберите вариант:  {Fore.RED}'))
             if result_user == 0:
@@ -121,6 +103,3 @@ class ContinueTraining:
             print(Fore.RED + 'Вы можете ввести только 1, 2, 3 или 4')
             print()
             input(Fore.GREEN + 'Нажмите Enter чтобы продолжить')
-
-
-
