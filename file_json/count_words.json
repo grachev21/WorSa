@@ -1,127 +1,122 @@
 [
   {
-    "en_word": "part",
-    "ru_word": "часть",
-    "status": 8
-  },
-  {
-    "en_word": "intelligent",
-    "ru_word": "разумный",
-    "status": 8
-  },
-  {
-    "en_word": "start",
-    "ru_word": "начинать",
-    "status": 6
-  },
-  {
-    "en_word": "detected",
-    "ru_word": "обнаружен",
-    "status": 5
-  },
-  {
-    "en_word": "release",
-    "ru_word": "выпускать",
-    "status": 16
-  },
-  {
-    "en_word": "freedom",
-    "ru_word": "свобода",
+    "en_word": "exchange",
+    "ru_word": "обмен",
     "status": 4
   },
   {
-    "en_word": "descriptive",
-    "ru_word": "описательный",
-    "status": 13
-  },
-  {
-    "en_word": "implying",
-    "ru_word": "подразумевая",
-    "status": 4
-  },
-  {
-    "en_word": "employee",
-    "ru_word": "сотрудник",
+    "en_word": "automatically",
+    "ru_word": "автоматически",
     "status": 3
   },
   {
-    "en_word": "accessible",
-    "ru_word": "доступный",
-    "status": 7
-  },
-  {
-    "en_word": "indirectly",
-    "ru_word": "косвенно",
-    "status": 10
-  },
-  {
-    "en_word": "interactively",
-    "ru_word": "интерактивно",
+    "en_word": "developer",
+    "ru_word": "разработчик",
     "status": 6
   },
   {
-    "en_word": "content",
-    "ru_word": "содержание",
-    "status": 6
+    "en_word": "array",
+    "ru_word": "множество",
+    "status": 4
   },
   {
-    "en_word": "depend",
-    "ru_word": "зависеть",
-    "status": 8
+    "en_word": "entering",
+    "ru_word": "входя",
+    "status": 3
   },
   {
-    "en_word": "either",
-    "ru_word": "или",
-    "status": 9
+    "en_word": "restart",
+    "ru_word": "перезапуск",
+    "status": 4
   },
   {
-    "en_word": "succeed",
-    "ru_word": "преуспевать",
-    "status": 10
-  },
-  {
-    "en_word": "digested",
-    "ru_word": "переваренный",
-    "status": 8
-  },
-  {
-    "en_word": "reject",
-    "ru_word": "отклонять",
+    "en_word": "accommodate",
+    "ru_word": "разместить",
     "status": 5
   },
   {
-    "en_word": "delineate",
-    "ru_word": "очертить",
-    "status": 6
+    "en_word": "preferred",
+    "ru_word": "предпочтительный",
+    "status": 4
   },
   {
-    "en_word": "comfortable",
-    "ru_word": "комфортный",
-    "status": 7
+    "en_word": "blog",
+    "ru_word": "блог",
+    "status": 2
   },
   {
-    "en_word": "contact",
-    "ru_word": "контакт",
-    "status": 12
+    "en_word": "separated",
+    "ru_word": "разделенный",
+    "status": 3
   },
   {
-    "en_word": "useful",
-    "ru_word": "полезный",
+    "en_word": "view",
+    "ru_word": "вид",
+    "status": 3
+  },
+  {
+    "en_word": "product",
+    "ru_word": "продукт",
+    "status": 3
+  },
+  {
+    "en_word": "reused",
+    "ru_word": "повторно используемый",
+    "status": 2
+  },
+  {
+    "en_word": "closely",
+    "ru_word": "внимательно",
+    "status": 8
+  },
+  {
+    "en_word": "resolver",
+    "ru_word": "резольвер",
     "status": 5
   },
   {
-    "en_word": "securely",
-    "ru_word": "надежно",
+    "en_word": "asked",
+    "ru_word": "спросил",
+    "status": 3
+  },
+  {
+    "en_word": "impact",
+    "ru_word": "влияние",
+    "status": 0
+  },
+  {
+    "en_word": "rule",
+    "ru_word": "правило",
+    "status": 3
+  },
+  {
+    "en_word": "trying",
+    "ru_word": "пытающийся",
+    "status": 3
+  },
+  {
+    "en_word": "enhancing",
+    "ru_word": "улучшение",
+    "status": 3
+  },
+  {
+    "en_word": "iterated",
+    "ru_word": "повторяемый",
     "status": 6
   },
   {
-    "en_word": "hardest",
-    "ru_word": "самый трудный",
-    "status": 14
+    "en_word": "telling",
+    "ru_word": "рассказывать",
+    "status": 5
   },
   {
-    "en_word": "manipulating",
-    "ru_word": "манипулирование",
-    "status": 14
+    "en_word": "ready",
+    "ru_word": "готовый",
+    "status": 4
+  },
+  {
+    "en_word": "bookmark",
+    "ru_word": "закладка",
+    "status": 5
   }
 ]

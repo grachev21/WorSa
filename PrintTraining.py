@@ -24,32 +24,38 @@ class PrintTraining:
 
             print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.en_word))
             print()
-            check_en = input(f'{Fore.RED} --> : {Fore.RED}')
-            if check_en != self.en_word:
+            try:
+                check_en = str(input(f'{Fore.RED} --> : {Fore.RED}'))
+                if check_en != self.en_word:
+                    continue
+                print()
+                print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.ru_word))
+                print()
+            except:
                 continue
-            print()
-            print(Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(self.ru_word))
-            print()
-            check_ru = input(f'{Fore.RED} --> : {Fore.RED}')
-            if check_ru != self.ru_word:
+            try:
+                check_ru = str(input(f'{Fore.RED} --> : {Fore.RED}'))
+                if check_ru != self.ru_word:
+                    continue
+                else:
+                    for cw in self.count_words:
+                        loop = record_read('loop', None, 'read')['number_loop']
+                        
+                        if cw['en_word'] == self.en_word and cw['status'] != loop:
+                            cw['status'] += 1
+                            if cw['status'] == loop:
+                                self.count_words.remove(cw)
+
+                                with open('./file_json/gussed_words.json', 'r') as file:
+                                    gussed_words = json.load(file)
+
+                                gussed_words.append(cw)
+
+                                with open('./file_json/gussed_words.json', 'w') as file:
+                                    json.dump(gussed_words, file, sort_keys=True, indent=2, ensure_ascii=False)
+
+                        with open('./file_json/count_words.json', 'w') as file:
+                            json.dump(self.count_words, file, sort_keys=True, indent=2, ensure_ascii=False)
+                    break
+            except:
                 continue
-            else:
-                for cw in self.count_words:
-                    loop = record_read('loop', None, 'read')['number_loop']
-                    
-                    if cw['en_word'] == self.en_word and cw['status'] != loop:
-                        cw['status'] += 1
-                        if cw['status'] == loop:
-                            self.count_words.remove(cw)
-
-                            with open('./file_json/gussed_words.json', 'r') as file:
-                                gussed_words = json.load(file)
-
-                            gussed_words.append(cw)
-
-                            with open('./file_json/gussed_words.json', 'w') as file:
-                                json.dump(gussed_words, file, sort_keys=True, indent=2, ensure_ascii=False)
-
-                    with open('./file_json/count_words.json', 'w') as file:
-                        json.dump(self.count_words, file, sort_keys=True, indent=2, ensure_ascii=False)
-                break

@@ -29,7 +29,7 @@ class ContinueTraining:
         if len(count_words) == 0:
             while len(word_list) != number_word:
                 number += 1
-                if my_dict[number]['en_word'] not in [gw['en_word'] for gw in gussed_words]:
+                if my_dict[number]['en_word'] not in [gw['en_word'] for gw in record_read('gussed_words', None, 'read')]:
                     append_dict = my_dict[number]
                     append_dict['status'] = 0
                     word_list.append(append_dict)

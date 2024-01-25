@@ -77,6 +77,7 @@ def main():
                     subprocess.run('clear', shell=True)
                     print('Вы повторили все слова!!!\n')
                     input('--> Enter')
+                    break
 
         elif value == 5:
             while True:

@@ -57,11 +57,6 @@ class RepeatWords:
                 input(Fore.LIGHTGREEN_EX + f'Нажмите Enter чтобы продолжить: {Fore.RED}')
                 return ['not_guess']
 
-            if gussed_words == record_read('gussed_words', None, 'read')[-1]:
-                subprocess.run('clear', shell=True)
-                print('Вы повторили все слова')
-                input('hell')
-                return ['exit']
         except ValueError:
             subprocess.run('clear', shell=True)
             print(Fore.RED + 'Вы можете ввести только 1, 2, 3 или 4' + '\n')
@@ -82,7 +77,7 @@ class RepeatWords:
             try:
                 check_en = input(f'{Fore.RED} --> : {Fore.RED}')
                 if check_en != en_word:
-                continue
+                    continue
                 print('\n' + Fore.GREEN + 'Введите слово --> ', Fore.YELLOW + str(ru_word) + '\n')
             except:
                 continue

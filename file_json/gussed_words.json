@@ -123,5 +123,135 @@
     "en_word": "launching",
     "ru_word": "запуск",
     "status": 20
+  },
+  {
+    "en_word": "release",
+    "ru_word": "выпускать",
+    "status": 20
+  },
+  {
+    "en_word": "descriptive",
+    "ru_word": "описательный",
+    "status": 20
+  },
+  {
+    "en_word": "digested",
+    "ru_word": "переваренный",
+    "status": 20
+  },
+  {
+    "en_word": "contact",
+    "ru_word": "контакт",
+    "status": 20
+  },
+  {
+    "en_word": "hardest",
+    "ru_word": "самый трудный",
+    "status": 20
+  },
+  {
+    "en_word": "succeed",
+    "ru_word": "преуспевать",
+    "status": 20
+  },
+  {
+    "en_word": "manipulating",
+    "ru_word": "манипулирование",
+    "status": 20
+  },
+  {
+    "en_word": "either",
+    "ru_word": "или",
+    "status": 20
+  },
+  {
+    "en_word": "accessible",
+    "ru_word": "доступный",
+    "status": 20
+  },
+  {
+    "en_word": "depend",
+    "ru_word": "зависеть",
+    "status": 20
+  },
+  {
+    "en_word": "employee",
+    "ru_word": "сотрудник",
+    "status": 20
+  },
+  {
+    "en_word": "reject",
+    "ru_word": "отклонять",
+    "status": 20
+  },
+  {
+    "en_word": "securely",
+    "ru_word": "надежно",
+    "status": 20
+  },
+  {
+    "en_word": "indirectly",
+    "ru_word": "косвенно",
+    "status": 20
+  },
+  {
+    "en_word": "start",
+    "ru_word": "начинать",
+    "status": 20
+  },
+  {
+    "en_word": "interactively",
+    "ru_word": "интерактивно",
+    "status": 20
+  },
+  {
+    "en_word": "comfortable",
+    "ru_word": "комфортный",
+    "status": 20
+  },
+  {
+    "en_word": "part",
+    "ru_word": "часть",
+    "status": 20
+  },
+  {
+    "en_word": "content",
+    "ru_word": "содержание",
+    "status": 20
+  },
+  {
+    "en_word": "delineate",
+    "ru_word": "очертить",
+    "status": 20
+  },
+  {
+    "en_word": "freedom",
+    "ru_word": "свобода",
+    "status": 20
+  },
+  {
+    "en_word": "detected",
+    "ru_word": "обнаружен",
+    "status": 20
+  },
+  {
+    "en_word": "useful",
+    "ru_word": "полезный",
+    "status": 20
+  },
+  {
+    "en_word": "intelligent",
+    "ru_word": "разумный",
+    "status": 20
+  },
+  {
+    "en_word": "implying",
+    "ru_word": "подразумевая",
+    "status": 20
+  },
+  {
+    "en_word": "entered",
+    "ru_word": "вошел",
+    "status": 10
   }
 ]
