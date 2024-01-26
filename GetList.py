@@ -8,6 +8,7 @@ from colorama import Fore
 
 init()
 
+
 class GetList:
 
     def get_list(self):
@@ -34,6 +35,7 @@ class GetList:
                 time.sleep(1)
                 subprocess.run('clear', shell=True)
 
+        # ...
         for vu in value:
             vu = vu.lower()
             if len(vu) > 2 and str(vu).isalpha() and vu[-1] != 's' and dictionary.check(vu):
@@ -45,15 +47,14 @@ class GetList:
 
         subprocess.run('clear', shell=True)
 
-        
         list_to_json = []
 
-        bar = IncrementalBar('Создание словаря', max = len(list_word))
+        bar = IncrementalBar('Создание словаря', max=len(list_word))
 
         print(f'{Fore.RESET}Згрузка данных')
         for lw in list_word:
             bar.next()
-            
+
             result = subprocess.run(f'trans -b en:ru {lw}', shell=True, stdout=subprocess.PIPE)
             result_out = result.stdout.decode('utf-8').rstrip()
 
@@ -65,8 +66,6 @@ class GetList:
 
                 list_to_json.append(to_json)
 
-            # if len(list_to_json) == 20:
-            #     break
 
         with open('file_json/my_dict.json', 'w') as f:
             json.dump(list_to_json, f, sort_keys=True, indent=2, ensure_ascii=False)

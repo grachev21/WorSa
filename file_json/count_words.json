@@ -2,121 +2,66 @@
   {
     "en_word": "exchange",
     "ru_word": "обмен",
-    "status": 4
+    "status": 7
   },
   {
     "en_word": "automatically",
     "ru_word": "автоматически",
-    "status": 3
-  },
-  {
-    "en_word": "developer",
-    "ru_word": "разработчик",
     "status": 6
-  },
-  {
-    "en_word": "array",
-    "ru_word": "множество",
-    "status": 4
-  },
-  {
-    "en_word": "entering",
-    "ru_word": "входя",
-    "status": 3
-  },
-  {
-    "en_word": "restart",
-    "ru_word": "перезапуск",
-    "status": 4
-  },
-  {
-    "en_word": "accommodate",
-    "ru_word": "разместить",
-    "status": 5
-  },
-  {
-    "en_word": "preferred",
-    "ru_word": "предпочтительный",
-    "status": 4
   },
   {
     "en_word": "blog",
     "ru_word": "блог",
-    "status": 2
+    "status": 7
   },
   {
     "en_word": "separated",
     "ru_word": "разделенный",
-    "status": 3
-  },
-  {
-    "en_word": "view",
-    "ru_word": "вид",
-    "status": 3
-  },
-  {
-    "en_word": "product",
-    "ru_word": "продукт",
-    "status": 3
+    "status": 7
   },
   {
     "en_word": "reused",
     "ru_word": "повторно используемый",
-    "status": 2
-  },
-  {
-    "en_word": "closely",
-    "ru_word": "внимательно",
-    "status": 8
+    "status": 9
   },
   {
     "en_word": "resolver",
     "ru_word": "резольвер",
-    "status": 5
+    "status": 8
   },
   {
     "en_word": "asked",
     "ru_word": "спросил",
-    "status": 3
+    "status": 9
   },
   {
     "en_word": "impact",
     "ru_word": "влияние",
-    "status": 0
+    "status": 3
   },
   {
     "en_word": "rule",
     "ru_word": "правило",
-    "status": 3
+    "status": 6
   },
   {
     "en_word": "trying",
     "ru_word": "пытающийся",
-    "status": 3
+    "status": 9
   },
   {
     "en_word": "enhancing",
     "ru_word": "улучшение",
-    "status": 3
-  },
-  {
-    "en_word": "iterated",
-    "ru_word": "повторяемый",
-    "status": 6
-  },
-  {
-    "en_word": "telling",
-    "ru_word": "рассказывать",
-    "status": 5
+    "status": 8
   },
   {
     "en_word": "ready",
     "ru_word": "готовый",
-    "status": 4
+    "status": 9
   },
   {
     "en_word": "bookmark",
     "ru_word": "закладка",
-    "status": 5
+    "status": 9
   }
 ]

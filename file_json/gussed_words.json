@@ -253,5 +253,60 @@
     "en_word": "entered",
     "ru_word": "вошел",
     "status": 10
+  },
+  {
+    "en_word": "closely",
+    "ru_word": "внимательно",
+    "status": 10
+  },
+  {
+    "en_word": "restart",
+    "ru_word": "перезапуск",
+    "status": 10
+  },
+  {
+    "en_word": "iterated",
+    "ru_word": "повторяемый",
+    "status": 10
+  },
+  {
+    "en_word": "view",
+    "ru_word": "вид",
+    "status": 10
+  },
+  {
+    "en_word": "accommodate",
+    "ru_word": "разместить",
+    "status": 10
+  },
+  {
+    "en_word": "entering",
+    "ru_word": "входя",
+    "status": 10
+  },
+  {
+    "en_word": "array",
+    "ru_word": "множество",
+    "status": 10
+  },
+  {
+    "en_word": "product",
+    "ru_word": "продукт",
+    "status": 10
+  },
+  {
+    "en_word": "developer",
+    "ru_word": "разработчик",
+    "status": 10
+  },
+  {
+    "en_word": "preferred",
+    "ru_word": "предпочтительный",
+    "status": 10
+  },
+  {
+    "en_word": "telling",
+    "ru_word": "рассказывать",
+    "status": 10
   }
 ]
