@@ -1,67 +1,152 @@
 [
   {
-    "en_word": "exchange",
-    "ru_word": "обмен",
-    "status": 7
+    "en_word": "produc",
+    "ru_word": "производить",
+    "status": 0
   },
   {
-    "en_word": "automatically",
-    "ru_word": "автоматически",
-    "status": 6
+    "en_word": "terminal",
+    "ru_word": "терминал",
+    "status": 0
   },
   {
-    "en_word": "blog",
-    "ru_word": "блог",
-    "status": 7
+    "en_word": "web",
+    "ru_word": "сеть",
+    "status": 0
   },
   {
-    "en_word": "separated",
-    "ru_word": "разделенный",
-    "status": 7
+    "en_word": "dynamic",
+    "ru_word": "динамичный",
+    "status": 1
   },
   {
-    "en_word": "reused",
-    "ru_word": "повторно используемый",
-    "status": 9
+    "en_word": "above",
+    "ru_word": "выше",
+    "status": 0
   },
   {
-    "en_word": "resolver",
-    "ru_word": "резольвер",
-    "status": 8
+    "en_word": "syntax",
+    "ru_word": "синтаксис",
+    "status": 0
   },
   {
-    "en_word": "asked",
-    "ru_word": "спросил",
-    "status": 9
+    "en_word": "feature",
+    "ru_word": "особенность",
+    "status": 0
   },
   {
-    "en_word": "impact",
-    "ru_word": "влияние",
-    "status": 3
+    "en_word": "fin",
+    "ru_word": "плавник",
+    "status": 0
   },
   {
-    "en_word": "rule",
-    "ru_word": "правило",
-    "status": 6
+    "en_word": "perhap",
+    "ru_word": "возможно",
+    "status": 0
   },
   {
-    "en_word": "trying",
-    "ru_word": "пытающийся",
-    "status": 9
+    "en_word": "chromium",
+    "ru_word": "хром",
+    "status": 0
   },
   {
-    "en_word": "enhancing",
-    "ru_word": "улучшение",
-    "status": 8
+    "en_word": "free",
+    "ru_word": "бесплатно",
+    "status": 0
   },
   {
-    "en_word": "ready",
-    "ru_word": "готовый",
-    "status": 9
+    "en_word": "directory",
+    "ru_word": "каталог",
+    "status": 0
   },
   {
-    "en_word": "bookmark",
-    "ru_word": "закладка",
-    "status": 9
+    "en_word": "more",
+    "ru_word": "более",
+    "status": 0
+  },
+  {
+    "en_word": "complete",
+    "ru_word": "полный",
+    "status": 0
+  },
+  {
+    "en_word": "involve",
+    "ru_word": "вовлекать",
+    "status": 0
+  },
+  {
+    "en_word": "load",
+    "ru_word": "нагрузка",
+    "status": 0
+  },
+  {
+    "en_word": "adaptive",
+    "ru_word": "адаптивный",
+    "status": 0
+  },
+  {
+    "en_word": "file",
+    "ru_word": "файл",
+    "status": 0
+  },
+  {
+    "en_word": "nex",
+    "ru_word": "следующий",
+    "status": 0
+  },
+  {
+    "en_word": "intelligence",
+    "ru_word": "интеллект",
+    "status": 1
+  },
+  {
+    "en_word": "cov",
+    "ru_word": "ков",
+    "status": 0
+  },
+  {
+    "en_word": "rely",
+    "ru_word": "полагаться",
+    "status": 0
+  },
+  {
+    "en_word": "proces",
+    "ru_word": "процессы",
+    "status": 0
+  },
+  {
+    "en_word": "unit",
+    "ru_word": "единица",
+    "status": 0
+  },
+  {
+    "en_word": "defaul",
+    "ru_word": "по умолчанию",
+    "status": 0
+  },
+  {
+    "en_word": "rea",
+    "ru_word": "реа",
+    "status": 0
+  },
+  {
+    "en_word": "difference",
+    "ru_word": "разница",
+    "status": 0
+  },
+  {
+    "en_word": "like",
+    "ru_word": "нравиться",
+    "status": 0
+  },
+  {
+    "en_word": "each",
+    "ru_word": "каждый",
+    "status": 0
+  },
+  {
+    "en_word": "collection",
+    "ru_word": "коллекция",
+    "status": 0
   }
 ]

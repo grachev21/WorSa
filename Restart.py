@@ -19,7 +19,7 @@ class Restart:
             check = input(f'{Fore.LIGHTRED_EX}Вы действительно хотите удалить данные? \n\n{Fore.LIGHTGREEN_EX}Если да то введите yes: {Fore.RED}')
             if check == 'yes':
                 record_read('count_words', [], 'record')
-                record_read('gussed_words', [], 'record')
+                record_read('my_dict', [], 'record')
                 break
             elif check == 'q':
                 break
