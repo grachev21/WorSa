@@ -7,3 +7,7 @@ register = template.Library()
 def menu():
     pass
 
+
+@register.inclusion_tag('tags/connect_styles.html')
+def connect_styles():
+    pass

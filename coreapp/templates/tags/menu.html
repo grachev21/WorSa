@@ -1,1 +1,17 @@
-<h1>helloxx:w</h1>
+{% load static %}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<div class="block_menu">
+    <div class="menu">
+        <div class="block_logo">
+            WorSa
+        </div>
+        <div class="block_user">login</div>
+        <div class="block_theme">
+            <img src="{% static 'icons/day.png' %}" alt="">
+            <img src="{% static 'icons/night.png' %}" alt="">
+            <div class="circle"></div>
+        </div>
+    </div>
+</div>

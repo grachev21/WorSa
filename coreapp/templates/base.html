@@ -7,10 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    {% connect_styles %}
     <title>Document</title>
 </head>
 <body>
-    helloxxx
     {% menu %}
     
     {% block content %}
@@ -18,5 +19,6 @@
     {% endblock content %}
         
     
+    <script type="module" src="{% static './js/base.js' %}"></script>
 </body>
 </html>
