@@ -7,4 +7,4 @@ class CustomUser(AbstractUser):
     email = models.EmailField(help_text='Укажите вашь Email.', null=True, verbose_name='email')
     first_name = models.CharField(help_text='Укажите ваше имя.', null=True, max_length=200)
     last_name = models.CharField(help_text='Укажите вашу фамилию.', null=True, max_length=200)
-    # date_creation = models.DateField(auto_field=True) 
+    date_creation = models.DateField() 
