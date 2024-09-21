@@ -1,4 +1,6 @@
 import { theme } from './theme.js';
+import { test_jquery } from './test_jquery.js';
+import { test_ajax_request } from './test_ajax_request.js';
 // import { show_block } from './show_block.js';
 // import { image_line } from "./image_line.js";
 // import { hot_deal } from './hot_deal.js';
@@ -24,6 +26,9 @@ window.onload = function main() {
 
 
     theme()
+    test_jquery()
+    test_ajax_request()
+    
     // show_block()
     // mobile_menu()
     // image_line()

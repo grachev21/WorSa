@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block ajax %}
+<form method="POST" id="post-form">
+    {% csrf_token %}
+     <div class="form-group">
+       <label>ru</label>
+       <textarea class="form-control" id="ru" placeholder="ru"></textarea>
+     </div>
+
+    <div class="form-group">
+      <label>en</label>
+      <input type="text" class="form-control" id="en" placeholder="en">
+    </div>
+
+     <div class="form-group">
+       <label>transcription</label>
+       <textarea class="form-control" id="transcription" placeholder="transcription"></textarea>
+     </div>
+
+     <div class="form-group">
+       <label>offer</label>
+       <textarea class="form-control" id="offer" placeholder="offer"></textarea>
+     </div>
+
+     <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).on('submit', '#post-form',function(e){
+    $.ajax({
+        type:'POST',
+        url:'{% url "test_ajax" %}',
+        data:{
+            ru:$('#ru').val(),
+            en:$('#en').val(),
+            transcription:$('#transcription').val(),
+            offer:$('#offer').val(),
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            action: 'post'
+        },
+        success:function(json){
+            document.getElementById("post-form").reset();
+            $(".posts").prepend('<div class="col-md-6">'+
+                '<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">' +
+                    '<div class="col p-4 d-flex flex-column position-static">' +
+                        '<h3 class="mb-0">' + json.ru+ '</h3>' +
+                        '<h3 class="mb-0">' + json.en+ '</h3>' +
+                        '<h3 class="mb-0">' + json.transcription+ '</h3>' +
+                        '<h3 class="mb-0">' + json.offer+ '</h3>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' 
+            )
+        },
+        error : function(xhr,errmsg,err) {
+        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+    }
+    });
+});
+
+  </script>
+{% endblock ajax %}
+    
