@@ -1,8 +1,9 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.http import JsonResponse
+from django.views.generic.edit import CreateView, FormView
 from .models import StoryWords
-
+from .forms import StoryWordsForm
 
 
 class Index(ListView):
@@ -16,25 +17,20 @@ class Index(ListView):
         return context
 
 
+class TestAjaxRequest(FormView):
+    template_name = 'test_ajax_request.html'
+    form_class = StoryWordsForm
 
-def test_ajax_request(request):
-    storywords = StoryWords.objects.all()
-    response_data = {}
+    def form_valid(self, form):
+        # Если форма валидна, вернем код 200
+        # вместе с именем пользователя
 
-    if request.POST.get('action') == 'post':
-        ru = request.POST.get('ru')
-        en = request.POST.get('en')
-        transcription = request.POST.get('transcription')
-        offer = request.POST.get('offer')
+        en = form.cleaned_data['en']
+        form.save()
+        return JsonResponse({"en": en}, status=200)
 
+    def form_invalid(self, form):
+        # Если форма невалидна, возвращаем код 400 с ошибками.
 
-        response_data['ru'] = ru
-        response_data['en'] = en
-        response_data['transcription'] = transcription
-        response_data['offer'] = offer
-
-        StoryWords.objects.create(ru=ru, en=en, transcription=transcription, offer=offer)
-
-        return JsonResponse(response_data)
-    
-    return render(request, 'test_ajax_request.html', {'storywords': storywords})
+        errors = form.errors.as_json()
+        return JsonResponse({"errors": errors}, status=400)
