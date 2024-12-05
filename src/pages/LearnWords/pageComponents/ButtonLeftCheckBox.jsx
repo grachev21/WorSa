@@ -1,10 +1,10 @@
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { changeSize } from "../../store/worsaSlice";
+import { useDispatch } from "react-redux";
+import { textSize } from "../../../store/worsaSlice";
 
 const ButtonLeftCheckBox = ({ colorDot, content, indexButton }) => {
-  // const dispatch = useDispatch();
-  // const changeSizeFunction = () => dispatch(changeSize("hello redux <<<"));
+  const dispatch = useDispatch();
+  const textSizeFunction = () => dispatch(textSize(indexButton));
 
   return (
     <button
@@ -22,6 +22,7 @@ const ButtonLeftCheckBox = ({ colorDot, content, indexButton }) => {
             before:top-1/2 
             before:-translate-y-1/2 
             `}
+      onClick={textSizeFunction}
     >
       {content}
     </button>

@@ -1,7 +1,7 @@
 import { useState,  } from "react";
 import ButtonLeftCheckBox from "./ButtonLeftCheckBox";
 
-import textSizeList from "./textSizeList";
+import textSizeList from "../textSizeList";
 
 const NavPanel = () => {
   const [value, setValue] = useState(1);
