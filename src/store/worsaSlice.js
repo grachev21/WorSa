@@ -3,16 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const worsaSlice = createSlice({
   name: "worsa",
   initialState: {
-    indexButton: 1,
-    textSize: ["md", "lg", "xl"]
+    textSize: { indexButton: 1, size: ["md", "lg", "xl"] },
+    errorInput: false,
   },
   reducers: {
     textSize: (state, action) => {
-      state.indexButton = action.payload;
+      state.textSize.indexButton = action.payload;
+    },
+    errorInput: (state, action) => {
+      state.errorInput = action.payload;
     }
   }
 });
 
-export const { textSize } = worsaSlice.actions;
+export const { textSize, errorInput} = worsaSlice.actions;
 
 export default worsaSlice.reducer;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import BarChartWords from "../../components/BarChartWords";
 import PieChartWords from "../../components/PieChart";
-import week from "../../helpers/Week";
-import month from "../../helpers/Month";
-import year from "../../helpers/Year";
+import week from "../../data/Week";
+import month from "../../data/Month";
+import year from "../../data/Year";
 
 const Graphic = () => {
   const [isItem, setItem] = useState(0);

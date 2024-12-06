@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { textSize } from "../../../store/worsaSlice";
 
 const ButtonLeftCheckBox = ({ colorDot, content, indexButton }) => {
   const dispatch = useDispatch();
   const textSizeFunction = () => dispatch(textSize(indexButton));
+  const reduxData = useSelector(state => state.worsa.textSize);
 
   return (
     <button
@@ -12,7 +12,7 @@ const ButtonLeftCheckBox = ({ colorDot, content, indexButton }) => {
             relative 
             px-4
             text-color_ten
-            // ${colorDot} 
+            ${reduxData.indexButton == indexButton ? "before:bg-blue-500" : "before:bg-blue-300"}
             before:content-[''] 
             before:w-2 
             before:h-2 

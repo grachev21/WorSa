@@ -1,4 +1,4 @@
-const dataWords = {
+const WordsTest = {
   words: [
     {
       word: "hello",
@@ -28,4 +28,4 @@ const dataWords = {
   rightWord: "name"
 };
 
-export default dataWords;
+export default WordsTest;
