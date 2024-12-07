@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { textSize } from "../../../store/worsaSlice";
 
-const ButtonLeftCheckBox = ({ colorDot, content, indexButton }) => {
+const ButtonLeftCheckBox = ({ content, indexButton }) => {
   const dispatch = useDispatch();
   const textSizeFunction = () => dispatch(textSize(indexButton));
   const reduxData = useSelector(state => state.worsa.textSize);

@@ -1,21 +1,30 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import WordsTest from "../../../data/WordsTest";
-import { errorInput } from "../../../store/worsaSlice";
+import { errorInput, inputTest } from "../../../store/worsaSlice";
 
 const InputWord = () => {
   const [isLength, setLength] = useState(false);
+  const [isFieldChanges, setFieldChanges] = useState("");
   const dispatch = useDispatch();
   const textSize = useSelector((state) => state.worsa.textSize);
   const bracket = "Input > [+]";
 
   const validWord = (e) => {
-    if (e.length > WordsTest.rightWord.length && e != WordsTest.rightWord) {
+    setFieldChanges(e);
+    if (e.length >= WordsTest.rightWord.length && e != WordsTest.rightWord) {
       setLength(true);
       dispatch(errorInput(true));
     } else {
       if (e == WordsTest.rightWord) {
-        // ...
+        console.log("true <<<")
+        setFieldChanges("");
+        dispatch(
+          inputTest({
+            wordTest: WordsTest.rightWord,
+            windowCondition: true,
+          })
+        );
       } else {
         dispatch(errorInput(false));
         setLength(false);
@@ -28,10 +37,11 @@ const InputWord = () => {
       <span className="text-color_nine mr-2">{bracket}</span>
       <input
         onChange={(e) => validWord(e.target.value)}
+        value={isFieldChanges}
         type="text"
         id="success"
         className={`
-          bg-color_three 
+          bg-color_one
           border-none  
           ${isLength ? "text-color_five" : "text-color_four"} 
           block outline-none w-1/2`}

@@ -1,4 +1,4 @@
-import { useState,  } from "react";
+import { useState } from "react";
 import ButtonLeftCheckBox from "./ButtonLeftCheckBox";
 
 import textSizeList from "../textSizeList";
