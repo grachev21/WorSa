@@ -6,7 +6,6 @@ const worsaSlice = createSlice({
     textSize: { indexButton: 1, size: ["md", "lg", "xl"] },
     errorInput: false,
     inputTest: {
-      wordTest: null,
       windowCondition: false,
     },
   },

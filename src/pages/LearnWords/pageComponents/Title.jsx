@@ -1,7 +1,7 @@
 const Title = ({ content }) => {
   return (
-    <main className="">
-      {content}
+    <main className="m-2 text-color_six font-bold shadow-lg">
+      {content}:
     </main>
   );
 };
