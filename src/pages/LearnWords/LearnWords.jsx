@@ -32,7 +32,6 @@ const LearnWords = () => {
             rounded-lg backdrop-blur-md bg-color_eight/30
             ${!inputTest.windowCondition ? "hidden" : "block"}
             `}>
-          <NavPanel />
           <InputWriteTest />
         </div>
       </section>

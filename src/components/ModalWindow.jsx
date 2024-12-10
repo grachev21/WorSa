@@ -13,7 +13,9 @@ const ModelWindow = ({ active, setActive }) => {
         className="p-5 rounded-lg backdrop-blur-md bg-color_eight/30 border border-slate-700"
         onClick={(e) => e.stopPropagation()}>
         <form className="flex justify-between flex-col w-full h-full">
-          <label className="text-color_four text-2xl font-bold mb-8" htmlFor="dict">
+          <label
+            className="text-color_four text-2xl font-bold mb-8"
+            htmlFor="dict">
             Вставте текст в это поле
           </label>
           <textarea
@@ -29,7 +31,9 @@ const ModelWindow = ({ active, setActive }) => {
               id="cuttingWords"
               type="checkbox"
             />
-            <label className="text-color_four font-semibold ml-5" htmlFor="cuttingWords">
+            <label
+              className="text-color_four font-semibold ml-5"
+              htmlFor="cuttingWords">
               Не сохранять слова короче двуъ символов
             </label>
           </div>

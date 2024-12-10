@@ -1,60 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import WordsTest from "../../../data/WordsTest";
 import { errorInput, inputTest } from "../../../store/worsaSlice";
 
 const InputWord = () => {
-  const [isLength, setLength] = useState(false);
+  const [isRedLetters, setRedLetters] = useState(false);
   const [isEnter, setEnter] = useState(false);
-  const [isPressInput, setPressInput] = useState(false);
   const dispatch = useDispatch();
   const textSize = useSelector((state) => state.worsa.textSize);
 
   const bracket = "Input > [+]";
   const enter = "Enter <-";
 
-  const keyDown = (e) => {
-    switch (e.key) {
-      case "Enter":
-        setPressInput(true)
-        break;
-      default:
-        break;
-    }
-    // if (e.key == "Enter" && setEnter) {
-    // }
-  };
   const validWord = (e) => {
-    if (e.length >= WordsTest.rightWord.en.length && e != WordsTest.rightWord.en) {
-      setLength(true);
-      dispatch(errorInput(true));
-    } else if (e == WordsTest.rightWord.en) {
-      setEnter(true);
-      if (isPressInput && isEnter) {
-        dispatch(inputTest({ windowCondition: true }));
-      }
-    } else {
-      dispatch(errorInput(false));
-      setLength(false);
-      setEnter(false);
+    e.length >= WordsTest.rightWord.en.length && e != WordsTest.rightWord.en
+      ? (setRedLetters(true), dispatch(errorInput(true)))
+      : (dispatch(errorInput(false)), setRedLetters(false));
+    e == WordsTest.rightWord.en ? setEnter(true) : setEnter(false);
+  };
+
+  const keyDown = (e) => {
+    if (e.key == "Enter" && isEnter) {
+      dispatch(inputTest({ windowCondition: true }));
     }
   };
   return (
     <main
       className={`
-        relative flex items-center w-full text-${textSize.size[textSize.indexButton]}
+        relative flex items-center w-full text-${
+          textSize.size[textSize.indexButton]
+        }
         m-2 mt-12
     `}>
       <span className="text-color_nine mr-2">{bracket}</span>
       <input
         onChange={(e) => validWord(e.target.value)}
-        onKeyDown={isEnter ? keyDown : null}
+        onKeyDown={keyDown}
         type="text"
         className={`
           bg-color_one
           border-none  
-          ${isLength ? "text-color_five" : "text-color_four"} 
-          
+          ${isRedLetters ? "text-color_five" : "text-color_four"} 
           block outline-none w-1/2`}
         autoFocus
       />

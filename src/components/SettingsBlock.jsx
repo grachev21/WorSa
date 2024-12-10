@@ -23,12 +23,27 @@ const SettingsBox = () => {
   };
   return (
     <main onClick={slide} className="w-5 h-5 md:relative md:h-10 md:w-28">
-      <img className="w-5 h-5 cursor-pointer invert md:hidden" src={menu} alt="" />
-      <section className="hidden md:flex md:justify-between md:items-center md:flex-row" style={slideTop}>
-        <img className="w-5 h-5 cursor-pointer invert" src={iconMessage} alt=""></img>
-        <img className="w-5 h-5 cursor-pointer invert" src={iconUser} alt=""></img>
+      <img
+        className="w-5 h-5 cursor-pointer invert md:hidden"
+        src={menu}
+        alt=""
+      />
+      <section
+        className="hidden md:flex md:justify-between md:items-center md:flex-row"
+        style={slideTop}>
+        <img
+          className="w-5 h-5 cursor-pointer invert"
+          src={iconMessage}
+          alt=""></img>
+        <img
+          className="w-5 h-5 cursor-pointer invert"
+          src={iconUser}
+          alt=""></img>
         <div className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">
-          <img className="absolute w-5 h-5 cursor-pointer" src={iconSettig} alt=""></img>
+          <img
+            className="absolute w-5 h-5 cursor-pointer invert"
+            src={iconSettig}
+            alt=""></img>
         </div>
       </section>
     </main>
