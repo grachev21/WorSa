@@ -1,39 +1,58 @@
-import { list } from "postcss";
 import WordsTest from "../../../data/WordsTest";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const InputWriteTest = () => {
+  const [isListGuessed, setListGuessed] = useState([]);
   const [redText, setredText] = useState(false);
   const [isEnter, setEnter] = useState(false);
   const words = WordsTest.rightWord.en + " - " + WordsTest.rightWord.ru;
-  const listGuessed = [];
   const enter = "Enter";
+  const inputWord = useRef(null);
+
+  useEffect(() => {
+    inputWord.current.focus();
+  });
 
   const inputChanges = (e) => {
     e.length >= words.length && e != words
       ? setredText(true)
       : setredText(false);
+
     e.length == words.length && e == words ? setEnter(true) : setEnter(false);
   };
 
-  // const keyDown = (e) => {
-  //   // e.key == "Enter" && isEnter ? listGuessed.push(words) : "";
-  // };
+  const [isLevelOpacity, setLevelOpacity] = useState(80);
+  const keyDown = (element) => {
+    element.key == "Enter" && isEnter && isListGuessed.length < 7
+      ? (setLevelOpacity(isLevelOpacity - 12),
+        setListGuessed([...isListGuessed, [words, isLevelOpacity]]))
+      : null;
+  };
+
   return (
     <main
       className={`flex flex-col items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}>
+      <ul className="text-color_four fixed left-3 bottom-10 flex flex-col-reverse">
+        {isListGuessed.map((value, index) => {
+          return (
+            <li key={index} className="transition-all" style={{opacity: `${value[1]}%`}} >
+              {value[0]} {index+1}
+            </li>
+          );
+        })}
+      </ul>
       <input
+        ref={inputWord}
         onChange={(e) => inputChanges(e.target.value)}
-        // onKeyDown={keyDown}
+        onKeyDown={keyDown}
         placeholder={words}
         type="text"
         id="success"
         className={`
-        flex items-center justify-center outline-none w-64 bg-color_three/60
+        center outline-none w-64 bg-color_three/60
         border border-color_nine rounded-md h-9 p-3
         ${redText ? "text-color_five" : "text-color_four"}
         `}
-        autoFocus
       />
 
       <div

@@ -46,7 +46,7 @@ const InputWord = () => {
       />
       <div
         className={`
-        ${isEnter ? "opacity-100 -top-12" : "-top-14 opacity-0"}
+        ${isEnter ? "opacity-100 -top-12 animate-pulse" : "-top-14 opacity-0"}
         absolute transition-all left-0 text-color_five 
         border border-color_five px-2 
         `}>
