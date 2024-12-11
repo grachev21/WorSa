@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import WordsTest from "../../../data/WordsTest";
 import { errorInput, inputTest } from "../../../store/worsaSlice";
+import worsaDb from "../../../data/worsaDb";
 
 const InputWord = () => {
   const [isRedLetters, setRedLetters] = useState(false);
@@ -13,10 +13,10 @@ const InputWord = () => {
   const enter = "Enter <-";
 
   const validWord = (e) => {
-    e.length >= WordsTest.rightWord.en.length && e != WordsTest.rightWord.en
+    e.length >= worsaDb.rightWord.en.length && e != worsaDb.rightWord.en
       ? (setRedLetters(true), dispatch(errorInput(true)))
       : (dispatch(errorInput(false)), setRedLetters(false));
-    e == WordsTest.rightWord.en ? setEnter(true) : setEnter(false);
+    e == worsaDb.rightWord.en ? setEnter(true) : setEnter(false);
   };
 
   const keyDown = (e) => {

@@ -32,3 +32,5 @@ const worsaDb = {
     },
   ],
 };
+
+export default worsaDb;

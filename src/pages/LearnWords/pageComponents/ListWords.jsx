@@ -1,12 +1,14 @@
-import WordsTest from "../../../data/WordsTest";
+import worsaDb from "../../../data/worsaDb";
 
-const brackets = ">>> ";
 const ListWords = () => {
+  const brackets = ">>> ";
   return (
     <main className="">
-      <h3 className="font-bold text-xl text-color_six animate-pulse drop-shadow-md mb-5">{brackets + WordsTest.rightWord.ru}</h3>
+      <h3 className="font-bold text-xl text-color_six animate-pulse drop-shadow-md mb-5">
+        {brackets + worsaDb.rightWord.ru}
+      </h3>
       <ul>
-        {WordsTest.words.map((value, index) => {
+        {worsaDb.words.map((value, index) => {
           return (
             <li className="flex flex-row  justify-start" key={index}>
               <span className="opacity-30 mr-2">{value.number}.</span>

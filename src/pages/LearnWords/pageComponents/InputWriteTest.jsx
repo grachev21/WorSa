@@ -1,11 +1,11 @@
-import WordsTest from "../../../data/WordsTest";
+import worsaDb from "../../../data/worsaDb";
 import { useState, useRef, useEffect } from "react";
 
 const InputWriteTest = () => {
   const [isListGuessed, setListGuessed] = useState([]);
   const [redText, setredText] = useState(false);
   const [isEnter, setEnter] = useState(false);
-  const words = WordsTest.rightWord.en + " - " + WordsTest.rightWord.ru;
+  const words = worsaDb.rightWord.en + " - " + worsaDb.rightWord.ru;
   const enter = "Enter";
   const inputWord = useRef(null);
 
@@ -35,8 +35,11 @@ const InputWriteTest = () => {
       <ul className="text-color_four fixed left-3 bottom-10 flex flex-col-reverse">
         {isListGuessed.map((value, index) => {
           return (
-            <li key={index} className="transition-all" style={{opacity: `${value[1]}%`}} >
-              {value[0]} {index+1}
+            <li
+              key={index}
+              className="transition-all"
+              style={{ opacity: `${value[1]}%` }}>
+              {value[0]} {index + 1}
             </li>
           );
         })}
