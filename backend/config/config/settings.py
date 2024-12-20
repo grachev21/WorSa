@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-07&d^rto9j3b$gif#azq@l)h&6&i*+8jx)ua)b%dg*!0g7bcfo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
     "corsheaders",
+    "rest_framework",
     "users",
     "core",
 ]
@@ -78,7 +78,10 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 # this should be put at the end of the settings.py file
-CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
+# CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

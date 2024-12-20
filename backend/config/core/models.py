@@ -1,5 +1,3 @@
-from ast import mod
-from tkinter import CASCADE
 from django.db import models
 from users.models import CustomUser
 
@@ -8,7 +6,7 @@ class Categories(models.Model):
     title = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 
 class WordsList(models.Model):
@@ -16,11 +14,10 @@ class WordsList(models.Model):
     ru = models.CharField(max_length=200)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=True)
     categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.en
+        return str(self.en)
 
 
 class UserWordsList(models.Model):
@@ -30,14 +27,20 @@ class UserWordsList(models.Model):
     geeks_field = models.BooleanField(verbose_name="знаю или нет")
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.en
+        return str(self.en)
 
 
 class Settings(models.Model):
-    numberWordsDay = models.IntegerField(verbose_name="количество слов в день")
-    amountInputText = models.ImageField(verbose_name="количество ввода текста")
+    numberWordsDay = models.IntegerField(verbose_name="количество за день")
+    amountInputText = models.IntegerField(verbose_name="количество ввода текста")
+    numberOptionsGuessing = models.IntegerField(verbose_name="количесво вариантов при угадывании")
+    voiceoverWords = models.BooleanField(verbose_name='озвучка')
+    transcriptions = models.BooleanField(verbose_name='транскрипция')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    
+
+
+

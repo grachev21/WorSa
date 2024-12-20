@@ -1,12 +1,15 @@
 from rest_framework import generics, viewsets, mixins
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.decorators import action
-from .models import WordsList, Categories
-from .serializers import WordsListSerializer
+from .models import WordsList, Categories, Settings
+from .serializers import WordsListSerializer, SettingsSerializer
 from rest_framework.response import Response
 
 # from rest_framework.views import APIView
 
+class SettingsSet(viewsets.ModelViewSet):
+    queryset = Settings.objects.all()
+    serializer_class = SettingsSerializer
 
 class WordsListSet(viewsets.ModelViewSet):
     # or replace on -> mixins.CreateModelMixin, mixins.RetrieveModelMixin,
@@ -14,10 +17,10 @@ class WordsListSet(viewsets.ModelViewSet):
     queryset = WordsList.objects.all()
     serializer_class = WordsListSerializer
 
-    @action(methods=["get"], detail=False)
-    def category(self, request, pk=None):
-        cats = Categories.objects.get()
-        return Response({"cats": [c.name for c in cats]})
+    # @action(methods=["get"], detail=False)
+    # def category(self, request, pk=None):
+    #     cats = Categories.objects.get()
+    #     return Response({"cats": [c.name for c in cats]})
 
 
 # class WordsListAPIList(generics.ListCreateAPIView):
