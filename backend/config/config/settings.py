@@ -78,7 +78,6 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 # this should be put at the end of the settings.py file
-# CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]

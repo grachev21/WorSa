@@ -5,9 +5,8 @@ const worsaSlice = createSlice({
   initialState: {
     textSize: { indexButton: 1, size: ["md", "lg", "xl"] },
     errorInput: false,
-    inputTest: {
-      windowCondition: false,
-    },
+    inputTest: { windowCondition: false },
+    navPanelActivate: false,
   },
   reducers: {
     textSize: (state, action) => {
@@ -19,9 +18,13 @@ const worsaSlice = createSlice({
     inputTest: (state, action) => {
       state.inputTest = action.payload;
     },
+    navPanelActivate: (state, action) => {
+      state.navPanelActivate = action.payload;
+    },
   },
 });
 
-export const { textSize, errorInput, inputTest } = worsaSlice.actions;
+export const { textSize, errorInput, inputTest, navPanelActivate } =
+  worsaSlice.actions;
 
 export default worsaSlice.reducer;

@@ -8,7 +8,6 @@ const SettingsInformation = () => {
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/w1/Settings/1')
-      //axios.get('http://127.0.0.1:8000/api/w1/Settings/')
       .then(response => {
         setItems(response.data);
       })
@@ -16,7 +15,6 @@ const SettingsInformation = () => {
         console.error('There was an error fetching the items!', error);
       });
   }, []);
-  console.log(items, "<<<")
   return (
     <main className="flex flex-col justify-center items-center sm:w-full px-2 sm:px-20">
       <LabelInfoDot title={"Количество слов за день"} value={items.numberWordsDay} />
