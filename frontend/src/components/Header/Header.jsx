@@ -14,7 +14,7 @@ const Header = () => {
           <NavLink to="/">
             <Logo />
           </NavLink>
-          <span className="sm:hidden">
+          <span className="hidden sm:block">
             <NavLink to="/">
               <LogoImg />
             </NavLink>

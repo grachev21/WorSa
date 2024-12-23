@@ -14,6 +14,7 @@ const SettingsBox = () => {
 
   const menuActive = () => {
     console.log(checkMenuActive)
+    console.log("click")
     if (checkMenuActive) {
       dispatch(navPanelActivate(false))
     } else {
@@ -35,6 +36,7 @@ const SettingsBox = () => {
   return (
     <main onClick={slide} className="w-5 h-5 md:relative md:h-10 md:w-28">
       <img
+        onClick={menuActive}
         className="w-5 h-5 cursor-pointer invert md:hidden"
         src={menu}
         alt=""
@@ -50,7 +52,7 @@ const SettingsBox = () => {
           className="w-5 h-5 cursor-pointer invert"
           src={iconUser}
           alt=""></img>
-        <div onClick={menuActive} className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">
+        <div className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">
           <img
             className="absolute w-5 h-5 cursor-pointer invert"
             src={iconSettig}

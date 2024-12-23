@@ -20,6 +20,7 @@ const SidePanel = () => {
   };
 
   return (
+
     <div className="hidden w-14 h-full fixed md:flex flex-col justify-between top-0 left-0 bg-color_two z-50">
       <div className="w-full h-20 flex items-center justify-center">
         <LogoImage />

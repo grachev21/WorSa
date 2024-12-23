@@ -1,8 +1,8 @@
 import SettingsInformation from "./SettingsInformation";
 import BlockInformation from "./BlockInformation";
-// import Graphic from "./Graphic";
 import Title from "../../components/Title";
 import Text from "../../components/Text";
+import Graphic from "./Graphic";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <Title text={"Информация о выших достижениях"} />
       <BlockInformation />
       <Title text={"Графики"} />
-      {/* <Graphic /> */}
+      <Graphic />
     </main>
   );
 }

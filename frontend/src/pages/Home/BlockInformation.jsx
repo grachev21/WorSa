@@ -25,7 +25,7 @@ const BlockInformation = () => {
     <main className="w-full px-4 flex flex-row flex-wrap justify-between">
       {listInformation.map((listInformation, index) => {
         return (
-          <section key={index} className="w-56 h-56 my-5 relative">
+          <section key={index} className="w-full h-40 my-5 relative">
             <div className="absolute w-full h-full blur-sm"
               style={gradientAnimation}></div>
             <span className="absolute w-full h-full left-0">
