@@ -1,7 +1,16 @@
+import { useSelector } from "react-redux";
+
 import { menu_list } from "../../data/ButtonMenuLIst";
+
 const NavPanel = () => {
+  const checkMenuActive = useSelector((state) => state.worsa.navPanelActivate)
+  console.log(checkMenuActive)
+
   return (
-    <main className="fixed w-72 h-screen bg-color_two right-0 top-0 z-50 p-7">
+    <main className={`fixed w-72 h-screen 
+                  bg-color_two 
+                    ${checkMenuActive ? "right-0" : "-right-80"} 
+                    top-0 z-50 p-7`}>
       <ul className="w-full flex flex-col justify-start text-left text-glow">
         {menu_list.map((item, index) => {
           return (

@@ -1,11 +1,25 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { navPanelActivate } from "../../store/worsaSlice";
+
 import iconSettig from "../../media/icons/icons8-settings-50.png";
 import iconUser from "../../media/icons/icons8-user-24.png";
 import iconMessage from "../../media/icons/icons8-message-50.png";
 import menu from "../../media/icons/icons8-menu-50.png";
-import { useState } from "react";
 
 const SettingsBox = () => {
   const [isMenu, setMenu] = useState(-180);
+  const checkMenuActive = useSelector((state) => state.worsa.navPanelActivate)
+  const dispatch = useDispatch()
+
+  const menuActive = () => {
+    console.log(checkMenuActive)
+    if (checkMenuActive) {
+      dispatch(navPanelActivate(false))
+    } else {
+      dispatch(navPanelActivate(true))
+    }
+  }
 
   const slide = () => {
     if (isMenu === -180) {
@@ -36,7 +50,7 @@ const SettingsBox = () => {
           className="w-5 h-5 cursor-pointer invert"
           src={iconUser}
           alt=""></img>
-        <div className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">
+        <div onClick={menuActive} className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">
           <img
             className="absolute w-5 h-5 cursor-pointer invert"
             src={iconSettig}
