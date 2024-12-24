@@ -9,6 +9,6 @@ const Counter = ({ number }) => {
       setNumber(isNumber + 1);
     }
   }, 20);
-  return <main className="font-light text-3xl p-4 text-color_four/50">{isNumber}</main>;
+  return <main className="font-light text-3xl text-color_four/80">{isNumber}</main>;
 };
 export default Counter;
