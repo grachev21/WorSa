@@ -15,7 +15,7 @@ import RotatingBackground from "./components/RotatingBackground";
 
 const App = () => {
   return (
-    <main className="flex flex-col justify-between w-full h-full">
+    <main className="relative flex flex-col w-full overflow-x-hidden">
       <RotatingBackground />
       <Router>
         <ScrollToTop />

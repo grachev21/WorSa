@@ -5,24 +5,25 @@ import SettingsBox from "./SettingsBlock";
 import NavPanel from "./NavPanel";
 const Header = () => {
   return (
-    <main className="fixed flex justify-center w-full h-16  
+    <header className="fixed flex w-full h-16  
                       backdrop-blur-md bg-color_three/30 z-50 border-b 
                     border-y-color_four/10 left-0 top-0">
       <NavPanel />
-      <div className="flex items-center justify-between mx-4 ml w-full sm:mx-20">
+      <div className="flex items-center justify-between mx-4 w-full transition-all sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
         <section className="flex">
-          <NavLink to="/">
-            <Logo />
-          </NavLink>
-          <span className="hidden sm:block">
+          <span className="hidden sm:block md:hidden">
             <NavLink to="/">
               <LogoImg />
             </NavLink>
           </span>
+
+          <NavLink to="/">
+            <Logo />
+          </NavLink>
         </section>
         <SettingsBox />
       </div>
-    </main>
+    </header>
   );
 };
 export default Header;

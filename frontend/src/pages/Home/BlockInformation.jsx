@@ -2,10 +2,10 @@ import Counter from "../../components/Counter";
 import { useState } from "react";
 import useInterval from "use-interval";
 const listInformation = [
-  { title: "Выучить слова", value: 436 },
+  { title: "Общая сумма слов", value: 436 },
   { title: "Заучено сегодня", value: 1336 },
   { title: "Повтор сегодня", value: 288 },
-  { title: "Повтор сегодня", value: 288 }
+  { title: "Общая сумма повтора", value: 288 }
 ];
 
 const BlockInformation = () => {
@@ -29,8 +29,8 @@ const BlockInformation = () => {
             <div className="absolute w-full h-full blur-sm"
               style={gradientAnimation}></div>
             <span className="absolute w-full h-full left-0">
-              <div className="flex flex-col justify-between rounded-lg bg-color_three w-full h-full">
-                <h1 className="font-bold text-2xl text-color_nine mt-3">
+              <div className="flex flex-col justify-between items-center rounded-lg bg-color_three w-full h-full">
+                <h1 className="font-bold text-2xl text-color_ten mt-3">
                   {listInformation.title}
                 </h1>
                 <Counter number={listInformation.value} />

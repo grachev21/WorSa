@@ -7,14 +7,16 @@ import Graphic from "./Graphic";
 export default function Home() {
   return (
     <main className="flex flex-col justify-center mt-32">
-      <Title text={"RunWord - помощник в освоении и отработки слов"} />
-      <Text text={"Здесь вы сможете создать словарь из любого текста, алгоритм удалит все повторяющиеся слова и сортируит их по алфавиту"} />
-      <Title text={"Информация о настройках"} />
-      <SettingsInformation />
-      <Title text={"Информация о выших достижениях"} />
-      <BlockInformation />
-      <Title text={"Графики"} />
-      <Graphic />
+      <section className="mx-4 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
+        <Title text={"RunWord - помощник в освоении и отработки слов"} />
+        <Text text={"Здесь вы сможете создать словарь из любого текста, алгоритм удалит все повторяющиеся слова и сортируит их по алфавиту"} />
+        <Title text={"Информация о настройках"} />
+        <SettingsInformation />
+        <Title text={"Информация о выших достижениях"} />
+        <BlockInformation />
+        <Title text={"Графики"} />
+        <Graphic />
+      </section>
     </main>
   );
 }

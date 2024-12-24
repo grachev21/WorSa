@@ -16,7 +16,7 @@ const SettingsInformation = () => {
   //    });
   //}, []);
   return (
-    <main className="flex flex-col justify-center items-center sm:w-full px-2 sm:px-20">
+    <main className="flex flex-col justify-center items-center">
       <LabelInfoDot title={"Количество слов за день"} value={items.numberWordsDay} />
       <LabelInfoDot title={"Количество повторов при написании"} value={items.amountInputText} />
       <LabelInfoDot title={"Количество вариантов при угадывании"} value={items.numberOptionsGuessing} />
