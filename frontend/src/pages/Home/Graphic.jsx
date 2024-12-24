@@ -1,6 +1,6 @@
 import { useState } from "react";
-import BarChartWords from "../../components/BarChartWords";
-import PieChartWords from "../../components/PieChart";
+import BarChartWords from "../../components/Charts/BarChartWords";
+import PieChartWords from "../../components/Charts/PieChartWords";
 import week from "../../data/Week";
 import month from "../../data/Month";
 import year from "../../data/Year";
@@ -17,8 +17,8 @@ const Graphic = () => {
               key={index}
               className={
                 index === isItem
-                  ? "text-color_four bg-color_eight p-3 cursor-pointer mt-5 rounded-lg"
-                  : "text-color_four bg-color_eight p-3 opacity-40 cursor-pointer mt-5 rounded-lg"
+                  ? "text-color_four bg-color_eight p-3 cursor-pointer mt-5 rounded-lg border border-color_ten/20"
+                  : "text-color_four/50 bg-color_eight p-3  cursor-pointer mt-5 rounded-lg border border-color_ten/30"
               }
               onClick={() => setItem(index)}>
               {ItemList}
@@ -26,7 +26,7 @@ const Graphic = () => {
           );
         })}
       </ul>
-      <ul className="bg-color_eight w-full mt-5 rounded-lg sm:h-72">
+      <ul className="bg-color_nine/15 min-h-[300px] transition-all w-full mt-5 rounded-lg sm:h-72">
         <li className={isItem === 0 ? "block" : "hidden"}>
           <BarChartWords data={week} />
         </li>

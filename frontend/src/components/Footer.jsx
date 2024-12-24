@@ -1,23 +1,34 @@
-import Logo from "./Logo";
-import LogoImg from "./LogoImage";
-import vk from "../media/icons/vk_black_logo_icon_147058.png";
-import vb from "../media/icons/viber_black_logo_icon_147056.png";
-import tg from "../media/icons/telegram_logo_icon_144811.png";
-import em from "../media/icons/email_mail_4598.png";
+import Logo from "../components/Logo";
+import LogoImage from "../components/LogoImage"
+
 const Footer = () => {
   return (
-    <main className="bg-black">
-      {/* <div className={style.Title}>
-        <LogoImg />
-        <Logo />
+    <footer class="bg-color_two mt-14">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+            <LogoImage />
+            <Logo />
+          </a>
+          <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-color_nine sm:mb-0">
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <hr class="my-6 border-color_four/30 sm:mx-auto  lg:my-8" />
+        <span class="block text-sm text-color_four sm:text-center ">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
       </div>
-      <div className={style.Icons}>
-        <img src={vk} alt=""></img>
-        <img src={vb} alt=""></img>
-        <img src={tg} alt=""></img>
-        <img src={em} alt=""></img>
-      </div> */}
-    </main>
+    </footer>
   );
 };
 

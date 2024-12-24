@@ -2,6 +2,7 @@ import React from "react";
 import {
   BarChart,
   Bar,
+  Legend,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -20,17 +21,16 @@ const BarChartWords = ({ data }) => {
         margin={{
           top: 20,
           right: 20,
-          left: 0,
-          bottom: 0,
+          left: 10,
+          bottom: 20,
         }}>
-        <CartesianGrid />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
+        <XAxis dataKey="name" stroke="#29d5a4" />
+        <YAxis stroke="#2b9cd5" />
+        <Tooltip wrapperStyle={{ width: 100, backgroundColor: 'red' }} />
         <Bar
           dataKey="uv"
-          fill="#2b9cd5"
-          activeBar={<Rectangle fill="pink" stroke="blue" />}
+          fill="#9f2398"
+          activeBar={<Rectangle fill="#9f2398" />}
         />
       </BarChart>
     </ResponsiveContainer>

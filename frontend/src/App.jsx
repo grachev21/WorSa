@@ -20,7 +20,6 @@ const App = () => {
       <Router>
         <ScrollToTop />
         <Header />
-
         <SidePanel />
         <Routes>
           <Route path="/" element={<Home />} />
