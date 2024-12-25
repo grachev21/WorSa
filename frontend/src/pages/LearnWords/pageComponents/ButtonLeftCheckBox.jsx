@@ -1,32 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 import { textSize } from "../../../store/worsaSlice";
+import { useState } from "react";
 
 const ButtonLeftCheckBox = ({ content, indexButton }) => {
   const dispatch = useDispatch();
   const textSizeFunction = () => dispatch(textSize(indexButton));
   const reduxData = useSelector(state => state.worsa.textSize);
+  const [isChecked, setIsChecked] = useState(true);
+  console.log(reduxData)
 
   return (
-    <button
-      className={`
-            relative 
-            px-4
-            text-color_ten
-            ${reduxData.indexButton == indexButton ? "before:bg-blue-500" : "before:bg-blue-300"}
-            before:content-[''] 
-            before:w-2 
-            before:h-2 
-            before:rounded-full 
-            before:absolute
-            before:left-0 
-            before:top-1/2 
-            before:-translate-y-1/2 
-            `}
-      onClick={textSizeFunction}
-    >
-      {content}
-    </button>
+    <div className="mx-4">
+      <label className="inline-flex items-center" htmlFor="redCheckBox">
+        <input
+          id="redCheckBox"
+          type="checkbox"
+          className="w-4 h-4 accent-red-600"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
+        <span className="ml-2">{content}</span>
+      </label>
+    </div>
   );
 };
-
 export default ButtonLeftCheckBox;

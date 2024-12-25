@@ -1,4 +1,3 @@
-import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const data = [
@@ -23,9 +22,9 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const PieChartWords = () => {
+const PieChartWords = ({ stateVisible }) => {
   return (
-    <div style={{ width: '100%', height: 300 }}>
+    stateVisible ?
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -34,7 +33,7 @@ const PieChartWords = () => {
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={130}
+            outerRadius={90}
             fill="#8884d8"
             dataKey="value"
           >
@@ -44,7 +43,7 @@ const PieChartWords = () => {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>
+      : ""
   );
 };
 

@@ -9,8 +9,8 @@ const Graphic = () => {
   const [isItem, setItem] = useState(0);
   const ItemList = ["Неделя", "Месяц", "Год", "Всё"];
   return (
-    <main className="flex flex-col mx-5 md:flex-row justify-center md:justify-between md:px-20  mt-24">
-      <ul className="flex flex-col justify-between w-full md:w-1/2">
+    <main className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <ul className="flex flex-col justify-between w-full md:w-full">
         {ItemList.map((ItemList, index) => {
           return (
             <li
@@ -26,19 +26,11 @@ const Graphic = () => {
           );
         })}
       </ul>
-      <ul className="bg-color_nine/15 min-h-[300px] transition-all w-full mt-5 rounded-lg sm:h-72">
-        <li className={isItem === 0 ? "block" : "hidden"}>
-          <BarChartWords data={week} />
-        </li>
-        <li className={isItem === 1 ? "block" : "hidden"}>
-          <BarChartWords data={month} />
-        </li>
-        <li className={isItem === 2 ? "block" : "hidden"}>
-          <BarChartWords data={year} />
-        </li>
-        <li className={isItem === 3 ? "block" : "hidden"}>
-          <PieChartWords />
-        </li>
+      <ul className="bg-color_eight min-h-[300px] transition-all w-full mt-5 rounded-lg sm:h-72">
+        <BarChartWords stateVisible={isItem === 0 ? true : false} data={week} />
+        <BarChartWords stateVisible={isItem === 1 ? true : false} data={month} />
+        <BarChartWords stateVisible={isItem === 2 ? true : false} data={year} />
+        <PieChartWords stateVisible={isItem === 3 ? true : false} />
       </ul>
     </main>
   );

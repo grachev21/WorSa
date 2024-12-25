@@ -11,29 +11,31 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const BarChartWords = ({ data }) => {
+const BarChartWords = ({ data, stateVisible }) => {
   return (
-    <ResponsiveContainer
-      width={"100%"}
-      height={300}>
-      <BarChart
-        data={data}
-        margin={{
-          top: 20,
-          right: 20,
-          left: 10,
-          bottom: 20,
-        }}>
-        <XAxis dataKey="name" stroke="#29d5a4" />
-        <YAxis stroke="#2b9cd5" />
-        <Tooltip wrapperStyle={{ width: 100, backgroundColor: 'red' }} />
-        <Bar
-          dataKey="uv"
-          fill="#9f2398"
-          activeBar={<Rectangle fill="#9f2398" />}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+    stateVisible ?
+      <ResponsiveContainer
+        width={"100%"}
+        height={300}>
+        <BarChart
+          data={data}
+          margin={{
+            top: 20,
+            right: 20,
+            left: 10,
+            bottom: 20,
+          }}>
+          <XAxis dataKey="name" stroke="#29d5a4" />
+          <YAxis stroke="#2b9cd5" />
+          <Tooltip wrapperStyle={{ width: 100, backgroundColor: 'red' }} />
+          <Bar
+            dataKey="uv"
+            fill="#9f2398"
+            activeBar={<Rectangle fill="#9f2398" />}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+      : ""
   );
 };
 

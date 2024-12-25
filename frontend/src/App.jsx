@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 import CreateDict from "./pages/CreateDict";
 import LearnWords from "./pages/LearnWords/LearnWords";
 import Repeat from "./pages/Repeat";
-import SidePanel from "./components/SidePanel";
+import SidePanel from "./components/SidePanel/SidePanel";
 import ScrollToTop from "./utils/scrollToTop";
 import List from "./pages/List";
 import Reset from "./pages/Reset";

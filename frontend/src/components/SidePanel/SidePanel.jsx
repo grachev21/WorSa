@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { menu_list } from "../data/ButtonMenuLIst";
+import { menu_list } from "../../data/ButtonMenuLIst";
 
-import ButtonTheme from "./ButtonTheme";
-import LogoImage from "./LogoImage";
+import ButtonTheme from "../ButtonTheme";
+import LogoImage from "../LogoImage";
 import InfoSlider from "./InfoSlider";
-import ModalWindow from "./ModalWindow";
+import ModalWindow from "../ModalWindow";
 
 const SidePanel = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -27,9 +27,11 @@ const SidePanel = () => {
       </div>
       <div className="w-full max-h-72 ">
         <NavLink to={menu_list[0].link}>
-          <InfoSlider text={menu_list[0].title} img={menu_list[0].img} button={false} onChange={handleChange} />
+          {({ isActive }) =>
+            <InfoSlider isActive={isActive} text={menu_list[0].title} img={menu_list[0].img} onChange={handleChange} />
+          }
         </NavLink>
-        <InfoSlider text={menu_list[1].title} img={menu_list[1].img} button={true} onChange={handleChange} />
+        <InfoSlider text={menu_list[1].title} img={menu_list[1].img} onChange={handleChange} />
         <NavLink to={menu_list[2].link}>
           <InfoSlider text={menu_list[2].title} img={menu_list[2].img} button={false} onChange={handleChange} />
         </NavLink>
