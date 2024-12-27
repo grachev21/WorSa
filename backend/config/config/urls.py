@@ -7,8 +7,8 @@ router = routers.DefaultRouter()
 router.register(r'WordsList', WordsListSet)
 router.register(r'Settings', SettingsSet)
 
-for u in router.urls:
-    print(u)
+# for u in router.urls:
+#     print(u)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
