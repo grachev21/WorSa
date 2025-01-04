@@ -1,12 +1,10 @@
-import os
 from django.core.files import File
 from django.core.management.base import BaseCommand
 from core.models import WordsList, Categories
 
-
 class ReadFile:
     def __init__(self):
-        self.path = '/home/grachev/Desktop/Translate/dbWords/words.txt'
+        self.path = './dbWords/words.txt'
         self.dictionary = self.readTxt()
 
     def readTxt(self):
@@ -32,7 +30,7 @@ class Command(BaseCommand):
     def __init__(self):
         self.dictionary = ReadFile().createDict()
         self.alphabet = list('abcdefghijklmnopqrstuvwxyz')
-        self.pathAudio = '/home/grachev/Desktop/Translate/dbWords/audio/'
+        self.pathAudio = './dbWords/audio/'
 
     def handle(self, *args, **options):
         for caseAlphabet in self.alphabet:
