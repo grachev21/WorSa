@@ -46,21 +46,20 @@ class Command(BaseCommand):
             path_audio_slow = os.path.join(BASE_DIR, 'dbWords', 'audio', f"{caseDictionary['en']} slow.mp3")
 
             if caseDictionary['en'][0] in self.alphabet:
-                cat = Categories.objects.get(letter=caseDictionary['en'][0])
 
-                with open(path_audio, 'rb') as audio_file, open(path_audio_slow, 'rb') as audio_slow_file:
-                    audio_file_wrapper = File(audio_file)
-                    audio_slow_file_wrapper = File(audio_slow_file)
-                    print(audio_file_wrapper)
-                    print(audio_slow_file_wrapper)
-                    exit()
+                if os.path.exists(path_audio) and os.path.exists(path_audio_slow):
+                    print('ok path') 
 
-                    WordsList.objects.create(
-                        en=caseDictionary['en'],
-                        ru=caseDictionary['ru'],
-                        audio=audio_file_wrapper,
-                        audioSlow=audio_slow_file_wrapper,
-                        categories=cat
-                    )
+                    cat = Categories.objects.get(letter=caseDictionary['en'][0])
+                    with open(path_audio, 'rb') as audio_file, open(path_audio_slow, 'rb') as audio_slow_file:
+                        audio_file_wrapper = File(audio_file)
+                        audio_slow_file_wrapper = File(audio_slow_file)
+                        WordsList.objects.create(
+                            en=caseDictionary['en'],
+                            ru=caseDictionary['ru'],
+                            audio=audio_file_wrapper,
+                            audioSlow=audio_slow_file_wrapper,
+                            categories=cat
+                        )
 
         self.stdout.write(self.style.SUCCESS('Successfully populated the database'))
