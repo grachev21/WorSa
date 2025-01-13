@@ -32,13 +32,13 @@ class UserWordsList(models.Model):
         return str(self.en)
 
 class Settings(models.Model):
-    numberWordsDay = models.IntegerField(default=20, verbose_name="количество за день")
-    amountInputText = models.IntegerField(default=10, verbose_name="количество ввода текста")
-    numberOptionsGuessing = models.IntegerField(default=8, verbose_name="количесво вариантов при угадывании")
-    voiceoverWords = models.BooleanField(default=True, verbose_name='озвучка')
-    voiceSpead = models.BooleanField(default=False, verbose_name='скорость озвучки')
+    numberWordsDay = models.IntegerField()
+    amountInputText = models.IntegerField()
+    numberOptionsGuessing = models.IntegerField()
+    voiceoverWords = models.BooleanField()
+    voiceSpead = models.BooleanField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-
+    
 
 class Graphs(models.Model):
     day = models.JSONField()

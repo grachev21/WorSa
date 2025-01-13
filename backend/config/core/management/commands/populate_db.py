@@ -4,7 +4,7 @@ from core.models import WordsList, Categories
 
 class ReadFile:
     def __init__(self):
-        self.path = './dbWords/words.txt'
+        self.path = 'C:/Users/grach/Work/WorSa/backend/config/core/management/commands/dbWords/words.txt'
         self.dictionary = self.readTxt()
 
     def readTxt(self):
@@ -30,7 +30,7 @@ class Command(BaseCommand):
     def __init__(self):
         self.dictionary = ReadFile().createDict()
         self.alphabet = list('abcdefghijklmnopqrstuvwxyz')
-        self.pathAudio = './dbWords/audio/'
+        self.pathAudio = 'C:/Users/grach/Work/WorSa/backend/config/core/management/commands/dbWords/audio'
 
     def handle(self, *args, **options):
         for caseAlphabet in self.alphabet:
