@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import WordsList, Settings
+from .models import WordsList, Settings, CustomUser
 
 
 class WordsListSerializer(serializers.ModelSerializer):

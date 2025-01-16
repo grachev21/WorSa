@@ -9,7 +9,7 @@ import LearnWords from "./pages/LearnWords/LearnWords";
 import Repeat from "./pages/Repeat";
 import SidePanel from "./components/SidePanel/SidePanel";
 import ScrollToTop from "./utils/scrollToTop";
-import List from "./pages/List";
+import List from "./pages/List/List";
 import Reset from "./pages/Reset";
 import RotatingBackground from "./components/RotatingBackground";
 
