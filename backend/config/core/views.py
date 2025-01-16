@@ -1,6 +1,5 @@
 from rest_framework import generics, viewsets, mixins
 from rest_framework.views import APIView
-from .serializers import RegisterSerializer
 # from rest_framework.viewsets import GenericViewSet
 # from rest_framework.decorators import action
 from rest_framework import status
@@ -21,3 +20,4 @@ class WordsListSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminOrReadOnly,)
     queryset = WordsList.objects.all()
     serializer_class = WordsListSerializer
+
