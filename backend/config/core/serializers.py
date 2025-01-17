@@ -10,7 +10,8 @@ class WordsListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WordsList
-        fields = ['en', 'ru', 'audio', 'categories'] 
+        # fields = ['en', 'ru', 'audio', 'categories'] 
+        fields = '__all__'
 
 class SettingsSerializer(serializers.ModelSerializer):
 

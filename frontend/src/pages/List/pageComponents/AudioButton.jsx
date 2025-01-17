@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import icon from "../../../media/icons/icons8-play-30.png";
 
 const AudioButton = ({ audio_word }) => {
-  const [play] = useSound(audio_button);
+  const [play] = useSound(audio_word);
   return (
     <main onClick={play} className="cursor-pointer">
       <img className="w-5 h-5 invert" src={icon} alt=""></img>

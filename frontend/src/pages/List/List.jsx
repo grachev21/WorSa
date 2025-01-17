@@ -1,35 +1,42 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+
 import AudioButton from "./pageComponents/AudioButton";
 
-export default function List() {
+const ItemList = () => {
   const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/w1/WordsList/")
+      .get(`http://localhost:8000/api/w1/WordsList/?page=${currentPage}`)
       .then((response) => {
-        setItems(response.data);
+        setItems(response.data.results);
+        setTotalPages(Math.ceil(response.data.count / 10)); // Предполагаем, что page_size = 10
       })
       .catch((error) => {
         console.error("There was an error fetching the items!", error);
       });
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   console.log(items);
-
   return (
     <main className="flex flex-col justify-center mt-32">
       <section className="mx-4 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
         <div className="relative overflow-x-auto">
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <table className="w-full text-sm text-left rtl:text-right text-color_ten">
+            <thead className="text-xs text-color_nine uppercase bg-color_eight">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                 Английский 
+                  Английский
                 </th>
                 <th scope="col" className="px-6 py-3">
-                 Русский 
+                  Русский
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Category
@@ -40,49 +47,28 @@ export default function List() {
               </tr>
             </thead>
             <tbody>
-              {items.map((value, index) => {
+              {items.map((item) => {
                 return (
-                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {value.en}
+                  <tr key={item.id} className="bg-color_three border-b">
+                    <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-color_four">
+                      {item.en}
                     </th>
-                    <td className="px-6 py-4">{value.ru}</td>
-                    <td className="px-6 py-4"><AudioButton audio_word={value.audio} /></td>
+                    <td className="px-6 py-4">{item.ru}</td>
+                    <td className="px-6 py-4">{item.ru}</td>
+                    <td className="px-6 py-4">{item.ru}</td>
+                    <td className="px-6 py-4">
+                      <AudioButton audio_word={item.audio} />
+                    </td>
                     {/* <td className="px-6 py-4">{value.categories}</td> */}
                   </tr>
                 );
               })}
-
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Apple MacBook Pro 17"
-                </th>
-                <td className="px-6 py-4">Silver</td>
-                <td className="px-6 py-4">Laptop</td>
-                <td className="px-6 py-4">$2999</td>
-              </tr>
-
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Microsoft Surface Pro
-                </th>
-                <td className="px-6 py-4">White</td>
-                <td className="px-6 py-4">Laptop PC</td>
-                <td className="px-6 py-4">$1999</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Magic Mouse 2
-                </th>
-                <td className="px-6 py-4">Black</td>
-                <td className="px-6 py-4">Accessories</td>
-                <td className="px-6 py-4">$99</td>
-              </tr>
             </tbody>
           </table>
         </div>
       </section>
     </main>
   );
-}
+};
+
+export default ItemList;
