@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 import os
 from pathlib import Path
 from datetime import timedelta
@@ -44,19 +43,20 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'djoser',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',  # Правильное имя модуля
 
 
     "users",
     "core",
 ]
 
+
 AUTH_USER_MODEL = "users.CustomUser"
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",  # new
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",  # new
     "django.middleware.common.CommonMiddleware",  # new
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -87,9 +87,10 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 # this should be put at the end of the settings.py file
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+# ]
+CORS_ALLOW_ALL_ORIGINS = True  # Разрешить запросы с любых источников
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

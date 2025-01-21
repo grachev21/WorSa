@@ -39,7 +39,7 @@ const SettingsBox = () => {
       <img onClick={menuActive} className="w-5 h-5 cursor-pointer invert md:hidden" src={menu} alt="" />
       <section className="hidden md:flex md:justify-between md:items-center md:flex-row" style={slideTop}>
         <img className="w-5 h-5 cursor-pointer invert" src={iconMessage} alt=""></img>
-        <NavLink to={"Registration"}>
+        <NavLink to={"/Authentication"}>
           <img className="w-5 h-5 cursor-pointer invert" src={iconUser} alt=""></img>
         </NavLink>
         <div className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">

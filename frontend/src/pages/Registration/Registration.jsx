@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [response, setResponse] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -24,7 +23,7 @@ const Registration = () => {
       });
       // setResponse(res.data);
       console.log("User created successfully", res.data);
-      navigate("/");
+      navigate("/Authentication");
     } catch (error) {
       console.error("There was an error creating the user!", error);
     }
