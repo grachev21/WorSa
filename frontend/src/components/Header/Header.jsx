@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import LogoImg from "../LogoImage";
 import SettingsBox from "./SettingsBlock";
 import NavPanel from "./NavPanel";
+
 const Header = () => {
   return (
     <header className="fixed flex w-full h-16  

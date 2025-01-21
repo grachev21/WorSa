@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css"
+import "./App.css";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
@@ -11,6 +11,9 @@ import SidePanel from "./components/SidePanel/SidePanel";
 import ScrollToTop from "./utils/scrollToTop";
 import List from "./pages/List/List";
 import Reset from "./pages/Reset";
+import Registration from "./pages/Registration/Registration";
+import Authentication from "./pages/Authentication/Authentication";
+
 import RotatingBackground from "./components/RotatingBackground";
 
 const App = () => {
@@ -21,14 +24,20 @@ const App = () => {
         <ScrollToTop />
         <Header />
         <SidePanel />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/createdict" element={<CreateDict />} />
-          <Route path="/university" element={<LearnWords />} />
-          <Route path="/repeat" element={<Repeat />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/reset" element={<Reset />} />
-        </Routes>
+        <div className="flex flex-col justify-center mt-32">
+          <div className="mx-4 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/createdict" element={<CreateDict />} />
+              <Route path="/university" element={<LearnWords />} />
+              <Route path="/repeat" element={<Repeat />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/reset" element={<Reset />} />
+              <Route path="/Registration" element={<Registration />} />
+              <Route path="/Authentication" element={<Authentication/>} />
+            </Routes>
+          </div>
+        </div>
         <Footer />
       </Router>
     </main>

@@ -1,7 +1,6 @@
 from django.db import models
 from users.models import CustomUser
 
-
 class Categories(models.Model):
     letter = models.CharField(max_length=200)
 
