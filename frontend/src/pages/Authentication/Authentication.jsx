@@ -9,8 +9,6 @@ const Authentication = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  // Закомментированное состояние для токена, которое пока не используется
-  // const [token, setToken] = useState('');
 
   // Обработчик отправки формы
   const handleSubmit = async (e) => {
@@ -21,18 +19,20 @@ const Authentication = () => {
         email, // Отправляем email
         password, // Отправляем password
       });
+      console.log(response.data.auth_token, "<<<");
       // Сохраняем полученный токен в localStorage
       localStorage.setItem('auth_token', response.data.auth_token);
+
       // Сбрасываем состояние ошибки
       setError('');
-      navigate("/");
+      //navigate("/");
     } catch (error) {
       // Устанавливаем состояние ошибки, если запрос не удался
       setError('Invalid email or password');
     }
   };
 
-  // Логируем значения email, password и token в консоль
+  //// Логируем значения email, password и token в консоль
   console.log(email, "<<<email");
   console.log(password, "<<<password");
   // console.log(token, "<<<token"); // Закомментировано, так как token не используется

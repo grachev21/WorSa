@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SettingsInformation = () => {
-
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-   axios.get('http://127.0.0.1:8000/api/w1/Settings/1')
-     .then(response => {
-       setItems(response.data);
-     })
-     .catch(error => {
-       console.error('There was an error fetching the items!', error);
-     });
+    axios
+      .get("http://127.0.0.1:8000/api/w1/Settings/1")
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the items!", error);
+      });
   }, []);
 
   return (

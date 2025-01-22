@@ -88,7 +88,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # this should be put at the end of the settings.py file
 # CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",
+#     "http://localhost:5174",
 # ]
 CORS_ALLOW_ALL_ORIGINS = True  # Разрешить запросы с любых источников
 
