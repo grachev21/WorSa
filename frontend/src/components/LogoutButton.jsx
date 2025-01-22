@@ -10,7 +10,7 @@ const LogoutButton = () => {
     navigate("/Authentication");
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return <button onClick={handleLogout}>Выйти</button>;
 };
 
 export default LogoutButton;

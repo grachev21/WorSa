@@ -47,15 +47,26 @@ const SettingsBox = () => {
   }, []);
 
   return (
-    <main onClick={slide} className="w-5 h-5 md:relative md:h-10 md:w-28">
+    <main onClick={slide} className="w-5 h-5 md:relative md:h-10 md:w-1/4">
       <img onClick={menuActive} className="w-5 h-5 cursor-pointer invert md:hidden" src={menu} alt="" />
       <section className="hidden md:flex md:justify-between md:items-center md:flex-row" style={slideTop}>
         <img className="w-5 h-5 cursor-pointer invert" src={iconMessage} alt=""></img>
-        <LogoutButton />
-        <NavLink to={"/Authentication"}>
-          <img className="w-5 h-5 cursor-pointer invert" src={iconUser} alt=""></img>
-        </NavLink>
-        {isAuth ? (<p className="text-color_four">logout</p>) : (<p className="text-color_four">login</p>)}
+
+        {isAuth ? (
+          <NavLink to={"/Authentication"}>
+            <div className="flex flex-row content-center">
+              <img className="w-5 h-5 cursor-pointer invert" src={iconUser} alt=""></img>
+              <p>Выйти</p>
+            </div>
+          </NavLink>) :
+          (
+            <div className="flex flex-row content-center">
+              <img className="w-5 h-5 cursor-pointer invert" src={iconUser} alt=""></img>
+              {isAuth ? (<p className="text-color_four"><LogoutButton /></p>) : (<p className="text-color_four">Войти</p>)}
+              <p>Войти</p>
+            </div>
+          )}
+
         <div className="flex justify-center items-center bg-color_six rounded-full w-10 h-10">
           <img className="absolute w-5 h-5 cursor-pointer invert" src={iconSettig} alt=""></img>
         </div>
