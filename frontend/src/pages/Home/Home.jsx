@@ -10,7 +10,7 @@ export default function Home() {
       <Title text={"RunWord - помощник в освоении и отработки слов"} />
       <Text text={"Здесь вы сможете создать словарь из любого текста, алгоритм удалит все повторяющиеся слова и сортируит их по алфавиту"} />
       <Title text={"Информация о настройках"} />
-      {/* <SettingsInformation /> */}
+      <SettingsInformation />
       <Title text={"Информация о выших достижениях"} />
       <BlockInformation />
       <Title text={"Графики"} />
