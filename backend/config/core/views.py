@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated, DjangoModelPermissions
 from rest_framework.pagination import PageNumberPagination
 
 from core.models import WordsList, Categories, Settings
@@ -18,10 +18,10 @@ class AppAPIListPagination(PageNumberPagination):
     # page_size_query_param = 'page_size'
     # max_page_size = 10000
 
-class SettingsSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
-    queryset = Settings.objects.all()
-    serializer_class = SettingsSerializer
+# class SettingsSet(viewsets.ModelViewSet):
+#     # permission_classes = [DjangoModelPermissions]
+#     queryset = Settings.objects.all()
+#     serializer_class = SettingsSerializer
     
     # @action(detail=False, methods=['get'])
     # def check_authentication(self, request, *args, **kwargs):
@@ -43,11 +43,14 @@ class SettingsSet(viewsets.ModelViewSet):
 
         
 
-# class SettingsSet(APIView):
-#     def get(self, request, *args, **kwargs):
-#         db = Settings.objects.all()
-#         serializer = SettingsSerializer(db, many=True)
-#         return Response(serializer.data)
+class SettingsSet(APIView):
+    def get(self, request, *args, **kwargs):
+        db = Settings.objects.select_related('user').filter(user=request.user)
+        serializer = SettingsSerializer(db, many=True)
+        if request.user.is_authenticated:
+            return Response(serializer.data)
+        else:
+            return Response({"message": "User is anonymous"}, status=200)
 
 class WordsListSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminOrReadOnly,)

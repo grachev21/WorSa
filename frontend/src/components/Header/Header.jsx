@@ -3,10 +3,12 @@ import Logo from "../Logo";
 import LogoImg from "../LogoImage";
 import SettingsBox from "./SettingsBlock";
 import NavPanel from "./NavPanel";
+import ModalWindow from "./ModalWindow";
 
 const Header = () => {
   return (
-    <header className="fixed flex w-full h-16  
+    <header
+      className="fixed flex w-full h-16  
                       backdrop-blur-md bg-color_three/30 z-50 border-b 
                     border-y-color_four/10 left-0 top-0">
       <NavPanel />
@@ -24,6 +26,8 @@ const Header = () => {
         </section>
         <SettingsBox />
       </div>
+
+      <ModalWindow />
     </header>
   );
 };

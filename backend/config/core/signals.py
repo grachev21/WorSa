@@ -12,15 +12,14 @@ def user_created(sender, instance, created, **kwargs):
     if created:
         # Ваша бизнес-логика при создании пользователя
         print(f"User {instance.email} has been created.")
-        if Settings.objects.count() == 0:
-            Settings.objects.create(
-                numberWordsDay=20,
-                amountInputText=8,
-                numberOptionsGuessing=8,
-                voiceoverWords=True,
-                voiceSpead=True,
-                user=instance,
-            )
+        Settings.objects.create(
+            numberWordsDay=20,
+            amountInputText=8,
+            numberOptionsGuessing=8,
+            voiceoverWords=True,
+            voiceSpead=True,
+            user=instance,
+        )
 
 
 

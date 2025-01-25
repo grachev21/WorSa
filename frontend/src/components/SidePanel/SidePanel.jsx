@@ -5,7 +5,7 @@ import { menu_list } from "../../data/ButtonMenuLIst";
 import ButtonTheme from "../ButtonTheme";
 import LogoImage from "../LogoImage";
 import InfoSlider from "./InfoSlider";
-import ModalWindow from "../ModalWindow";
+// import ModalWindow from "../ModalWindow";
 
 const SidePanel = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -48,7 +48,7 @@ const SidePanel = () => {
           <ButtonTheme />
         </div>
       </div>
-      <ModalWindow active={modalActive} setActive={setModalActive} />
+      {/* <ModalWindow active={modalActive} setActive={setModalActive} /> */}
     </div>
   );
 };
