@@ -57,5 +57,5 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     # Метод для строкового представления пользователя
-    def __str__(self):
-        return self.email
+    # def __str__(self):
+    #     return self.email

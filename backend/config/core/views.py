@@ -11,40 +11,19 @@ from core.models import WordsList, Categories, Settings
 from .serializers import WordsListSerializer, SettingsSerializer
 from .services import SettingsService
 
-from .permissions import IsAdminOrReadOnly
+from .permissions import CustomPermissionSettings 
 
 class AppAPIListPagination(PageNumberPagination):
     page_size = 50
     # page_size_query_param = 'page_size'
     # max_page_size = 10000
 
-# class SettingsSet(viewsets.ModelViewSet):
-#     # permission_classes = [DjangoModelPermissions]
-#     queryset = Settings.objects.all()
-#     serializer_class = SettingsSerializer
+class SettingsSet(viewsets.ModelViewSet):
+    queryset = Settings.objects.all()
+    serializer_class = SettingsSerializer
+    permission_classes = [CustomPermissionSettings]
     
-    # @action(detail=False, methods=['get'])
-    # def check_authentication(self, request, *args, **kwargs):
-    #     if request.user.is_authenticated:
-    #         SettingsService.set_default()
-    #         return Response({"message": "User is authenticated"})
-    #     else:
-    #         return Response({"message": "User is anonymous"}, status=401)
-
-
-    # def list(self, request, *args, **kwargs):
-    #     print(request.user)
-    #     if request.user.is_authenticated:
-    #         settings = SettingsService.set_default()
-    #         serializer = SettingsSerializer(settings, many=True)
-    #         return Response(serializer.data)
-    #     else:
-    #         return Response({"message": "User is anonymous"}, status=200)
-
-        
-
-class SettingsSet(APIView):
-    def get(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs):
         db = Settings.objects.select_related('user').filter(user=request.user)
         serializer = SettingsSerializer(db, many=True)
         if request.user.is_authenticated:
@@ -52,8 +31,19 @@ class SettingsSet(APIView):
         else:
             return Response({"message": "User is anonymous"}, status=200)
 
+        
+
+# class SettingsSet(APIView):
+#     def get(self, request, *args, **kwargs):
+#         db = Settings.objects.select_related('user').filter(user=request.user)
+#         serializer = SettingsSerializer(db, many=True)
+#         if request.user.is_authenticated:
+#             return Response(serializer.data)
+#         else:
+#             return Response({"message": "User is anonymous"}, status=200)
+
 class WordsListSet(viewsets.ModelViewSet):
-    permission_classes = (IsAdminOrReadOnly,)
+    # permission_classes = (IsAdminOrReadOnly,)
     queryset = WordsList.objects.all()
     serializer_class = WordsListSerializer
     pagination_class = AppAPIListPagination

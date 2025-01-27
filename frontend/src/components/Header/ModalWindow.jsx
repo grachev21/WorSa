@@ -5,26 +5,28 @@ const ModelWindow = () => {
   return (
     <main className="w-screen h-screen absolute">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2">
-        <div className="rounded-lg bg-white/30 backdrop-blur-sm">
-          <form className="">
+        <div className="border border-color_four/10 rounded-lg bg-color_eight/30 backdrop-blur-md">
+          <form className="p-4">
             <div className="-mx-3 flex flex-wrap">
               <div className="w-full px-3">
                 <div className="mb-5">
-                  <label htmlFor="fName" className="mb-3 block text-base font-medium text-[#07074D]">
+                  <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
                     First Name
                   </label>
-                  <input
-                    type="text"
-                    name="fName"
-                    id="fName"
-                    placeholder="First Name"
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
+
+              <input
+                type="text"
+                name="guest"
+                id="guest"
+                placeholder="5"
+                min="0"
+                className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
                 </div>
               </div>
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
-                  <label htmlFor="lName" className="mb-3 block text-base font-medium text-[#07074D]">
+                  <label htmlFor="lName" className="mb-3 block text-base font-medium text-color_nine">
                     Last Name
                   </label>
                   <input

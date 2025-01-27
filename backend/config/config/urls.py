@@ -7,16 +7,16 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r"WordsList", WordsListSet)
-# router.register(r"Settings", SettingsSet)
+router.register(r"Settings", SettingsSet)
 
 # for u in router.urls:
 #     print(u)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/w1/", include(router.urls)),
+    path("api/v1/", include(router.urls)),
 
-    path("api/w1/Settings/", SettingsSet.as_view()),
+    # path("api/v1/Settings/", SettingsSet.as_view()),
 
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
@@ -24,3 +24,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# 

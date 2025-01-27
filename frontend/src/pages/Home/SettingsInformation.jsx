@@ -2,6 +2,7 @@ import LabelInfoDot from "../../components/LabelInfoDot";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import api from "../../utils/api";
+import { data } from "react-router-dom";
 
 const SettingsInformation = () => {
   const [settings, setSettings] = useState(null);
@@ -10,7 +11,7 @@ const SettingsInformation = () => {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const response = await api.get("http://127.0.0.1:8000/api/w1/Settings/");
+        const response = await api.get("http://127.0.0.1:8000/api/v1/Settings/");
         setSettings(response.data);
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -24,7 +25,10 @@ const SettingsInformation = () => {
 
     fetchSettings();
   }, []);
-  console.log(settings, "Данные о настройках");
+  // console.log(settings, "Данные о настройках");
+  // console.log(typeof(settings), "<<<");
+  // console.log(Object.entries(settings));
+  // console.log(settings[0].user);
 
   if (error) {
     return <div>{error}</div>;
@@ -39,6 +43,7 @@ const SettingsInformation = () => {
       {settings.map((value) => {
         return (
           <div className="flex flex-col justify-center items-center" key={value.id}>
+            <LabelInfoDot title="Пользователь" value={value.user} />
             <LabelInfoDot title="Количество повторов при написании" value={value.amountInputText} />
             <LabelInfoDot title="Количество вариантов при угадывании" value={value.numberOptionsGuessing} />
             <LabelInfoDot title="Количество слов в день" value={value.numberWordsDay} />
