@@ -6,6 +6,7 @@ import NavPanel from "./NavPanel";
 import ModalWindow from "./ModalWindow";
 
 const Header = () => {
+
   return (
     <header
       className="fixed flex w-full h-16  

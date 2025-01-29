@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { navPanelActivate } from "../../store/worsaSlice";
+import { modalWindowSettings } from "../../store/worsaSlice.js";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +19,16 @@ const SettingsBox = () => {
   const checkMenuActive = useSelector((state) => state.worsa.navPanelActivate);
   const dispatch = useDispatch();
   const [isAuth, setIsAuth] = useState(false);
+
+  const checkModalWindow = useSelector((state) => state.worsa.modalWindowSettings);
+  const dispatchModalWindow = useDispatch();
+  const showModalWindow = () => {
+    if (checkModalWindow) {
+      dispatchModalWindow(modalWindowSettings(true));
+    } else {
+      dispatchModalWindow(modalWindowSettings(false));
+    }
+  };
 
   const menuActive = () => {
     if (checkMenuActive) {
@@ -88,7 +99,9 @@ const SettingsBox = () => {
           </div>
         )}
 
-        <div className="flex justify-center items-center bg-color_six w-7 h-7 ml-4 hover:opacity-85 origin-center rotate-45">
+        <div
+          onClick={showModalWindow}
+          className="flex justify-center items-center bg-color_six w-7 h-7 ml-4 hover:opacity-85 origin-center rotate-45">
           <img className="absolute w-5 h-5 cursor-pointer invert" src={iconSettig} alt=""></img>
         </div>
       </section>
