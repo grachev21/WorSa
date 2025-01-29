@@ -26,7 +26,6 @@ const Header = () => {
         </section>
         <SettingsBox />
       </div>
-
       <ModalWindow />
     </header>
   );

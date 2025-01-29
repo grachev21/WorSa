@@ -51,10 +51,9 @@ const SettingsBox = () => {
     checkAuth();
   }, []);
 
-
   // Эту функция выводит пользователя из аккаунта
   const handleLogout = async () => {
-    console.log('exit')
+    console.log("exit");
     await logout();
     // Перенаправляет после выхода из аккаунта
     navigate("/Authentication");
@@ -65,7 +64,6 @@ const SettingsBox = () => {
     <main onClick={slide} className="h-5 md:relative md:h-10">
       <img onClick={menuActive} className="w-5 h-5 cursor-pointer invert md:hidden" src={menu} alt="" />
       <section className="hidden md:flex md:justify-between md:items-center md:flex-row" style={slideTop}>
-
         <div className="flex items-center cursor-pointer hover:opacity-85">
           <img className="w-5 h-5 invert bg-cover m-3" src={iconMessage} alt=""></img>
           <p className="text-color_four">Сообщить</p>
@@ -81,14 +79,14 @@ const SettingsBox = () => {
             </NavLink>
             <NavLink to={"/Registration"}>
               <p className="text-color_four ml-1 hover:opacity-85">/ Регистрация</p>
-            </NavLink></>) :
-
-          (
-            <div onClick={handleLogout} className="flex items-center cursor-pointer ml-3">
-              <img className="w-5 h-5 cursor-pointer invert bg-cover m-2" src={iconUser} alt=""></img>
-              <p className="text-color_four">Выйти</p>
-            </div>
-          )}
+            </NavLink>
+          </>
+        ) : (
+          <div onClick={handleLogout} className="flex items-center cursor-pointer ml-3">
+            <img className="w-5 h-5 cursor-pointer invert bg-cover m-2" src={iconUser} alt=""></img>
+            <p className="text-color_four">Выйти</p>
+          </div>
+        )}
 
         <div className="flex justify-center items-center bg-color_six w-7 h-7 ml-4 hover:opacity-85 origin-center rotate-45">
           <img className="absolute w-5 h-5 cursor-pointer invert" src={iconSettig} alt=""></img>
