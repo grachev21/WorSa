@@ -27,7 +27,7 @@ const worsaSlice = createSlice({
       state.showCardInPanel = action.payload;
     },
     modalWindowSettings: (state, action) => {
-      console.log(state);
+      console.log(action);
       state.modalWindowSettings = action.payload;
     },
   },

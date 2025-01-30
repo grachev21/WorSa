@@ -1,19 +1,18 @@
 import ButtonSery from "../ButtonSery";
 import ButtonSalad from "../ButtonSalad";
-const ModelWindow = () => {
-  const active = true;
+import { useSelector } from "react-redux";
+import { modalWindowSettings } from "../../store/worsaSlice";
 
-const closeWindow = () => {
-  console.log("close");
-}
-  
+const ModelWindow = () => {
+  const showWindow = useSelector((state) => state.worsa.modalWindowSettings);
+  console.log(showWindow, "<");
+
   return (
-    <main className="w-screen h-screen absolute" onClick={closeWindow}>
+    <main className={`${showWindow ? "block": "hidden"} w-screen h-screen absolute`}>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2">
         <div className="border border-color_four/10 rounded-lg bg-color_eight/30 backdrop-blur-md">
           <form className="p-4">
             <div className="-mx-3 flex flex-wrap">
-
               <div className="w-full px-3">
                 <div className="mb-5">
                   <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
@@ -32,7 +31,7 @@ const closeWindow = () => {
               <div className="w-full px-3">
                 <div className="mb-5">
                   <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
-                    Количество вариантов при угадывании 
+                    Количество вариантов при угадывании
                   </label>
                   <input
                     type="text"
@@ -57,7 +56,6 @@ const closeWindow = () => {
                   />
                 </div>
               </div>
-
             </div>
 
             <div className="mb-5">
@@ -66,7 +64,7 @@ const closeWindow = () => {
                 <div className="flex items-center">
                   <input type="radio" name="radio1" id="radioButton1" className="h-5 w-5" />
                   <label htmlFor="radioButton1" className="pl-3 text-base font-medium text-color_nine">
-                  Включена 
+                    Включена
                   </label>
                 </div>
                 <div className="flex items-center">
@@ -84,7 +82,7 @@ const closeWindow = () => {
                 <div className="flex items-center">
                   <input type="radio" name="radio1" id="radioButton1" className="h-5 w-5" />
                   <label htmlFor="radioButton1" className="pl-3 text-base font-medium text-color_nine">
-                   Медленно 
+                    Медленно
                   </label>
                 </div>
                 <div className="flex items-center">
