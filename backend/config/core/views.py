@@ -23,13 +23,11 @@ class SettingsSet(viewsets.ModelViewSet):
     queryset = Settings.objects.all()
     serializer_class = SettingsSerializer
     permission_classes = [IsOwnerAndAuthenticated]
-    # permission_classes = [CustomPermissionSettings]
 
     def get_queryset(self):
         return Settings.objects.filter(user=self.request.user)
     
     def perform_create(self, serializer):
-        # Устанавливаем поле user текущим пользователем при создании объекта
         serializer.save(user=self.request.user)
     
     # def list(self, request, *args, **kwargs):

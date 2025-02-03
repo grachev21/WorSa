@@ -1,6 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { modalWindowSettings } from "../../store/worsaSlice";
 import { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
 import api from "../../utils/api";
 
 const ModelWindow = () => {
@@ -11,6 +14,26 @@ const ModelWindow = () => {
   // Выполняет get запрос
   const [settings, setSettings] = useState({});
   const [error, setError] = useState(null);
+
+  const SignupSchema = Yup.object().shape({
+    amountInputText: Yup.number()
+      .typeError("Значение должно быть числом")
+      .min(4, "Слишком мало!")
+      .max(100, "Слишком много!")
+      .required("Обязательное поле"),
+    numberOptionsGuessing: Yup.number()
+      .typeError("Значение должно быть числом")
+      .min(4, "Слишком мало!")
+      .max(100, "Слишком много!")
+      .required("Обязательное поле"),
+    numberWordsDay: Yup.number()
+      .typeError("Значение должно быть числом")
+      .min(4, "Слишком мало!")
+      .max(100, "Слишком много!")
+      .required("Обязательное поле"),
+    voiceSpead: Yup.string().min(8, "Пароль должен быть не менее 8 символов").required("Обязательное поле"),
+    voiceoverWords: Yup.string().min(8, "Пароль должен быть не менее 8 символов").required("Обязательное поле"),
+  });
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -85,110 +108,127 @@ const ModelWindow = () => {
 
   return (
     <main className={`${showWindow ? "block" : "hidden"} w-screen h-screen absolute`}>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2">
-        <div className="border border-color_four/10 rounded-lg bg-color_eight/30 backdrop-blur-md">
-          <form onSubmit={handleSubmit} className="p-4">
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3">
+      <Formik
+        initialValues={{
+          numberWordsDay: "",
+          amountInputText: "",
+          numberOptionsGuessing: "",
+          voiceoverWords: "",
+          voiceSpead: "",
+        }}
+        validationSchema={SignupSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log(values);
+          setSubmitting(false);
+        }}>
+        {({ isSubmitting }) => (
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2">
+            <div className="border border-color_four/10 rounded-lg bg-color_eight/30 backdrop-blur-md">
+              {/* <form onSubmit={handleSubmit} className="p-4"> */}
+              <Form className="p-4">
+                <div className="-mx-3 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <div className="mb-5">
+                      <label htmlFor="amountInputText" className="mb-3 block text-base font-medium text-color_nine">
+                        Количество повторов при написании
+                      </label>
+                      <Field
+                        name="amountInputText"
+                        placeholder={settings.amountInputText}
+                        value={formData.amountInputText}
+                        onChange={handleChange}
+                        className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
+                      />
+                      <ErrorMessage name="amountInputText" component="div" />
+                    </div>
+                  </div>
+
+                  <div className="w-full px-3">
+                    <div className="mb-5">
+                      <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
+                        Количество вариантов при угадывании
+                      </label>
+                      <input
+                        type="number"
+                        name="numberOptionsGuessing"
+                        placeholder={settings.numberOptionsGuessing}
+                        value={formData.numberOptionsGuessing}
+                        onChange={handleChange}
+                        className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full px-3">
+                    <div className="mb-5">
+                      <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
+                        Количество слов в день
+                      </label>
+                      <input
+                        type="number"
+                        name="numberWordsDay"
+                        placeholder={settings.numberWordsDay}
+                        value={formData.numberWordsDay}
+                        onChange={handleChange}
+                        className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Радио кнопки */}
                 <div className="mb-5">
-                  <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
-                    Количество повторов при написании
-                  </label>
-                  <input
-                    type="number"
-                    name="amountInputText"
-                    placeholder={settings.amountInputText}
-                    value={formData.amountInputText}
-                    onChange={handleChange}
-                    className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
-                  />
+                  <label className="mb-3 block text-base font-medium text-color_ten">Озвучка</label>
+                  <div className="flex items-center space-x-6">
+                    <div className="flex items-center">
+                      <input
+                        name="voiceoverWords"
+                        type="checkbox"
+                        checked={formData.voiceoverWords}
+                        onChange={handleChange}
+                        className="w-4 h-4 accent-color_six"
+                      />
+                      <label htmlFor="voiceoverWords" className="pl-3 text-base font-medium text-color_nine">
+                        Включить
+                      </label>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="w-full px-3">
+                {/* Радио кнопки */}
                 <div className="mb-5">
-                  <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
-                    Количество вариантов при угадывании
-                  </label>
-                  <input
-                    type="number"
-                    name="numberOptionsGuessing"
-                    placeholder={settings.numberOptionsGuessing}
-                    value={formData.numberOptionsGuessing}
-                    onChange={handleChange}
-                    className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
-                  />
+                  <label className="mb-3 block text-base font-medium text-color_ten">Скорость озвучки</label>
+                  <div className="flex items-center space-x-6">
+                    <div className="flex items-center">
+                      <input
+                        name="voiceSpead"
+                        type="checkbox"
+                        checked={formData.voiceSpead}
+                        onChange={handleChange}
+                        className="w-4 h-4 accent-color_ten"
+                      />
+                      <label htmlFor="voiceSpead" className="pl-3 text-base font-medium text-color_nine">
+                        Замедлить озвучку
+                      </label>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="w-full px-3">
-                <div className="mb-5">
-                  <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
-                    Количество слов в день
-                  </label>
-                  <input
-                    type="number"
-                    name="numberWordsDay"
-                    placeholder={settings.numberWordsDay}
-                    value={formData.numberWordsDay}
-                    onChange={handleChange}
-                    className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
 
-            {/* Радио кнопки */}
-            <div className="mb-5">
-              <label className="mb-3 block text-base font-medium text-color_ten">Озвучка</label>
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center">
-                  <input
-                    name="voiceoverWords"
-                    type="checkbox"
-                    checked={formData.voiceoverWords}
-                    onChange={handleChange}
-                    className="w-4 h-4 accent-color_six"
-                  />
-                  <label htmlFor="voiceoverWords" className="pl-3 text-base font-medium text-color_nine">
-                    Включить
-                  </label>
+                {/* Кнопки  */}
+                <div className="flex flex-row">
+                  <div
+                    onClick={closeModalWindow}
+                    className="hover:opacity-85 cursor-pointer rounded-md w-40 mr-4 bg-color_five py-3 px-8 text-center text-base font-semibold text-color_four outline-none">
+                    Отмена
+                  </div>
+                  <button className="hover:opacity-85 rounded-md bg-color_nine py-3 px-8 text-center text-base font-semibold text-color_four outline-none">
+                    Сохранить
+                  </button>
                 </div>
-              </div>
+              </Form>
             </div>
-
-            {/* Радио кнопки */}
-            <div className="mb-5">
-              <label className="mb-3 block text-base font-medium text-color_ten">Скорость озвучки</label>
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center">
-                  <input
-                    name="voiceSpead"
-                    type="checkbox"
-                    checked={formData.voiceSpead}
-                    onChange={handleChange}
-                    className="w-4 h-4 accent-color_ten"
-                  />
-                  <label htmlFor="voiceSpead" className="pl-3 text-base font-medium text-color_nine">
-                    Замедлить озвучку
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            {/* Кнопки  */}
-            <div className="flex flex-row">
-              <div
-                onClick={closeModalWindow}
-                className="hover:opacity-85 cursor-pointer rounded-md w-40 mr-4 bg-color_five py-3 px-8 text-center text-base font-semibold text-color_four outline-none">
-                Отмена
-              </div>
-              <button className="hover:opacity-85 rounded-md bg-color_nine py-3 px-8 text-center text-base font-semibold text-color_four outline-none">
-                Сохранить
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+          </div>
+        )}
+      </Formik>
     </main>
   );
 };
