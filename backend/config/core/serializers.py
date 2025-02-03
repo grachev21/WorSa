@@ -15,21 +15,23 @@ class WordsListSerializer(serializers.ModelSerializer):
 
 class SettingsSerializer(serializers.ModelSerializer):
     # user = serializers.SlugRelatedField(read_only=True, slug_field='CustomUser')
-    user = serializers.SlugRelatedField(read_only=True, slug_field='email')
+    # user = serializers.SlugRelatedField(read_only=True, slug_field='email')
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Settings
-        # fields = '__all__'
-        fields = [
-            'numberWordsDay',
-            'amountInputText', 
-            'numberOptionsGuessing',
-            'voiceoverWords', 
-            'voiceSpead',
-            'id',
-            'user',
-        ]
+        fields = '__all__'
         read_only_fields = ['user']  # Указываем, что поле user является только для чтения (оно будет установлено автоматически)
+        # extra_kwargs = {'user': {'read_only': True}}  # Убедитесь, что поле 'user' является только для чтения
+
+        # fields = [
+        #     'numberWordsDay',
+        #     'amountInputText', 
+        #     'numberOptionsGuessing',
+        #     'voiceoverWords', 
+        #     'voiceSpead',
+        #     'id',
+        #     'user',
+        # ]
 
 
 

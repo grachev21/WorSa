@@ -5,14 +5,14 @@ import api from "../../utils/api";
 import { data } from "react-router-dom";
 
 const SettingsInformation = () => {
-  const [settings, setSettings] = useState(null);
+  const [settings, setSettings] = useState({});
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSettings = async () => {
       try {
         const response = await api.get("http://127.0.0.1:8000/api/v1/Settings/");
-        setSettings(response.data);
+        setSettings(response.data[0]);
       } catch (error) {
         if (error.response && error.response.status === 404) {
           setError("Settings not found");
@@ -25,33 +25,19 @@ const SettingsInformation = () => {
 
     fetchSettings();
   }, []);
-  // console.log(settings, "Данные о настройках");
-  // console.log(typeof(settings), "<<<");
-  // console.log(Object.entries(settings));
-  // console.log(settings[0].user);
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!settings) {
-    return <div>Loading...</div>;
-  }
+  console.log(settings, "Данные о настройках");
 
   return (
     <main>
-      {settings.map((value) => {
-        return (
-          <div className="flex flex-col justify-center items-center" key={value.id}>
-            <LabelInfoDot title="Пользователь" value={value.user} />
-            <LabelInfoDot title="Количество повторов при написании" value={value.amountInputText} />
-            <LabelInfoDot title="Количество вариантов при угадывании" value={value.numberOptionsGuessing} />
-            <LabelInfoDot title="Количество слов в день" value={value.numberWordsDay} />
-            <LabelInfoDot title="Скорость озвучки" value={value.voiceoverWords ? "Медленно" : "Быстро"} />
-            <LabelInfoDot title="Озвучка слов" value={value.voiceoverWords ? "Включено" : "Выключено"} />
+          <div className="flex flex-col justify-center items-center" key={settings.id}>
+            <LabelInfoDot title="Пользователь" value={settings.user} />
+            <LabelInfoDot title="Количество повторов при написании" value={settings.amountInputText} />
+            <LabelInfoDot title="Количество вариантов при угадывании" value={settings.numberOptionsGuessing} />
+            <LabelInfoDot title="Количество слов в день" value={settings.numberWordsDay} />
+            <LabelInfoDot title="Скорость озвучки" value={settings.voiceoverWords ? "Медленно" : "Быстро"} />
+            <LabelInfoDot title="Озвучка слов" value={settings.voiceoverWords ? "Включено" : "Выключено"} />
           </div>
-        );
-      })}
     </main>
   );
 };

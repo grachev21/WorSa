@@ -1,11 +1,14 @@
-from rest_framework import permissions
+from rest_framework.permissions import BasePermission 
 
-class CustomPermissionSettings(permissions.BasePermission):
+class IsOwnerAndAuthenticated(BasePermission):
+    """
+    Разрешение, которое позволяет доступ только аутентифицированным пользователям, которые являются владельцами данных.
+    """
+
+    def has_permission(self, request, view):
+        # Проверка, что пользователь аутентифицирован
+        return request.user and request.user.is_authenticated
 
     def has_object_permission(self, request, view, obj):
-        # Разрешить методы GET, HEAD, OPTIONS для всех пользователей
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        # Разрешить методы PUT, PATCH, DELETE только автору
-        return obj.author == request.user
+        # Проверка, что пользователь является владельцем объекта
+        return obj.user == request.user

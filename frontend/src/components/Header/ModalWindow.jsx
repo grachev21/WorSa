@@ -28,6 +28,7 @@ const ModelWindow = () => {
     };
     fetchSettings();
   }, []);
+
   console.log(settings, "<<< get data");
 
   // Для post запроса
