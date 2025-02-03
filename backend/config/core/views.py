@@ -18,12 +18,25 @@ class AppAPIListPagination(PageNumberPagination):
     # page_size_query_param = 'page_size'
     # max_page_size = 10000
 
-class SettingsSet(viewsets.ModelViewSet):
-    queryset = Settings.objects.all()
-    serializer_class = SettingsSerializer
-    permission_classes = [CustomPermissionSettings]
+# class SettingsSet(viewsets.ModelViewSet):
+#     queryset = Settings.objects.all()
+#     serializer_class = SettingsSerializer
+#     permission_classes = [CustomPermissionSettings]
     
-    def list(self, request, *args, **kwargs):
+#     def list(self, request, *args, **kwargs):
+#         db = Settings.objects.select_related('user').filter(user=request.user)
+#         serializer = SettingsSerializer(db, many=True)
+#         if request.user.is_authenticated:
+#             return Response(serializer.data)
+#         else:
+#             return Response({"message": "User is anonymous"}, status=200)
+
+        
+
+class SettingsSet(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
         db = Settings.objects.select_related('user').filter(user=request.user)
         serializer = SettingsSerializer(db, many=True)
         if request.user.is_authenticated:
@@ -31,16 +44,15 @@ class SettingsSet(viewsets.ModelViewSet):
         else:
             return Response({"message": "User is anonymous"}, status=200)
 
-        
+    def post(self, request, *args, **kwargs):
+        data = request.data  # Получаем данные из запроса
+        data['user'] = request.user.id  # Добавляем текущего пользователя в данные
+        serializer = SettingsSerializer(data=data)  # Создаем экземпляр сериализатора с обновленными данными
+        if serializer.is_valid():  # Проверяем валидность данных
+            serializer.save()  # Сохраняем данные в базу данных, если они валидны
+            return Response(serializer.data, status=status.HTTP_201_CREATED)  # Возвращаем ответ с данными и статусом 201 Created
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # Возвращаем ошибки валидации и статус 400 Bad Request, если данные невалидны
 
-# class SettingsSet(APIView):
-#     def get(self, request, *args, **kwargs):
-#         db = Settings.objects.select_related('user').filter(user=request.user)
-#         serializer = SettingsSerializer(db, many=True)
-#         if request.user.is_authenticated:
-#             return Response(serializer.data)
-#         else:
-#             return Response({"message": "User is anonymous"}, status=200)
 
 class WordsListSet(viewsets.ModelViewSet):
     # permission_classes = (IsAdminOrReadOnly,)

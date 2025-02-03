@@ -42,7 +42,6 @@ class Settings(models.Model):
     voiceSpead = models.BooleanField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
-
 class Graphs(models.Model):
     day = models.JSONField()
     week = models.JSONField()

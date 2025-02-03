@@ -19,7 +19,17 @@ class SettingsSerializer(serializers.ModelSerializer):
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Settings
-        fields = '__all__'
+        # fields = '__all__'
+        fields = [
+            'numberWordsDay',
+            'amountInputText', 
+            'numberOptionsGuessing',
+            'voiceoverWords', 
+            'voiceSpead',
+            'id',
+            'user',
+        ]
+        read_only_fields = ['user']  # Указываем, что поле user является только для чтения (оно будет установлено автоматически)
 
 
 
