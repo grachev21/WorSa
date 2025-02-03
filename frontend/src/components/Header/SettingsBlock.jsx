@@ -24,9 +24,9 @@ const SettingsBox = () => {
   const dispatchModalWindow = useDispatch();
   const showModalWindow = () => {
     if (checkModalWindow) {
-      dispatchModalWindow(modalWindowSettings(true));
-    } else {
       dispatchModalWindow(modalWindowSettings(false));
+    } else {
+      dispatchModalWindow(modalWindowSettings(true));
     }
   };
 

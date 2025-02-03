@@ -10,11 +10,13 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   // Получаем токен аутентификации из localStorage
   const token = localStorage.getItem("auth_token");
+  console.log(token, "token");
   if (token) {
     // Если токен существует, добавляем его в заголовок Authorization
     config.headers.Authorization = `Token ${token}`;
   }
   // Возвращаем конфигурацию запроса
+  console.log(config);
   return config;
 });
 
