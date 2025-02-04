@@ -16,6 +16,11 @@ const ModelWindow = () => {
   const [error, setError] = useState(null);
 
   const SignupSchema = Yup.object().shape({
+    numberWordsDay: Yup.number()
+      .typeError("Значение должно быть числом")
+      .min(4, "Слишком мало!")
+      .max(100, "Слишком много!")
+      .required("Обязательное поле"),
     amountInputText: Yup.number()
       .typeError("Значение должно быть числом")
       .min(4, "Слишком мало!")
@@ -26,13 +31,10 @@ const ModelWindow = () => {
       .min(4, "Слишком мало!")
       .max(100, "Слишком много!")
       .required("Обязательное поле"),
-    numberWordsDay: Yup.number()
-      .typeError("Значение должно быть числом")
-      .min(4, "Слишком мало!")
-      .max(100, "Слишком много!")
-      .required("Обязательное поле"),
-    voiceSpead: Yup.string().min(8, "Пароль должен быть не менее 8 символов").required("Обязательное поле"),
-    voiceoverWords: Yup.string().min(8, "Пароль должен быть не менее 8 символов").required("Обязательное поле"),
+    voiceoverWords: Yup.boolean()
+        .oneOf([true], 'Поле обязательно для заполнения'),
+    voiceSpead: Yup.boolean()
+        .oneOf([true], 'Поле обязательно для заполнения'),
   });
 
   useEffect(() => {
@@ -113,8 +115,8 @@ const ModelWindow = () => {
           numberWordsDay: "",
           amountInputText: "",
           numberOptionsGuessing: "",
-          voiceoverWords: "",
-          voiceSpead: "",
+          voiceoverWords:false, 
+          voiceSpead: false,
         }}
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -129,8 +131,24 @@ const ModelWindow = () => {
                 <div className="-mx-3 flex flex-wrap">
                   <div className="w-full px-3">
                     <div className="mb-5">
-                      <label htmlFor="amountInputText" className="mb-3 block text-base font-medium text-color_nine">
+                      <label htmlFor="numberWordsDay" className="mb-3 block text-base font-medium text-color_nine">
                         Количество повторов при написании
+                      </label>
+                      <Field
+                        name="amountInputText"
+                        placeholder={settings.numberWordsDay}
+                        value={formData.numberWordsDay}
+                        onChange={handleChange}
+                        className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
+                      />
+                      <ErrorMessage name="numberWordsDay" component="div" className="text-color_four" />
+                    </div>
+                  </div>
+
+                  <div className="w-full px-3">
+                    <div className="mb-5">
+                      <label htmlFor="amountInputtext" className="mb-3 block text-base font-medium text-color_nine">
+                        количество повторов при написании
                       </label>
                       <Field
                         name="amountInputText"
@@ -139,40 +157,26 @@ const ModelWindow = () => {
                         onChange={handleChange}
                         className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
                       />
-                      <ErrorMessage name="amountInputText" component="div" />
+                      <ErrorMessage name="amountInputText" component="div" className="text-color_four"/>
                     </div>
                   </div>
 
                   <div className="w-full px-3">
                     <div className="mb-5">
-                      <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
-                        Количество вариантов при угадывании
+                      <label htmlFor="numberOptionsGuessing" className="mb-3 block text-base font-medium text-color_nine">
+                        Количество повторов при написании
                       </label>
-                      <input
-                        type="number"
+                      <Field
                         name="numberOptionsGuessing"
                         placeholder={settings.numberOptionsGuessing}
                         value={formData.numberOptionsGuessing}
                         onChange={handleChange}
                         className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
                       />
+                      <ErrorMessage name="numberOptionsGuessing" component="div" className="text-color_four"/>
                     </div>
                   </div>
-                  <div className="w-full px-3">
-                    <div className="mb-5">
-                      <label htmlFor="fName" className="mb-3 block text-base font-medium text-color_nine">
-                        Количество слов в день
-                      </label>
-                      <input
-                        type="number"
-                        name="numberWordsDay"
-                        placeholder={settings.numberWordsDay}
-                        value={formData.numberWordsDay}
-                        onChange={handleChange}
-                        className="w-full appearance-none rounded-md border border-color_four bg-color_four py-3 px-6 text-base font-medium text-color_eight outline-none focus:border-color_seven focus:shadow-md"
-                      />
-                    </div>
-                  </div>
+
                 </div>
 
                 {/* Радио кнопки */}
