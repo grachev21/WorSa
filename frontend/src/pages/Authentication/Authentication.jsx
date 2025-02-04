@@ -10,34 +10,22 @@ const Authentication = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Обработчик отправки формы
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Предотвращаем стандартное поведение формы
+    e.preventDefault(); 
     try {
-      // Выполняем POST-запрос для аутентификации
       const response = await axios.post('http://127.0.0.1:8000/auth/token/login/', {
-        email, // Отправляем email
-        password, // Отправляем password
+        email, 
+        password, 
       });
       console.log(response.data.auth_token, "<<<");
-      // Сохраняем полученный токен в localStorage
       localStorage.setItem('auth_token', response.data.auth_token);
 
-      // Сбрасываем состояние ошибки
       setError('');
-      //navigate("/");
     } catch (error) {
-      // Устанавливаем состояние ошибки, если запрос не удался
       setError('Invalid email or password');
     }
   };
 
-  //// Логируем значения email, password и token в консоль
-  console.log(email, "<<<email");
-  console.log(password, "<<<password");
-  // console.log(token, "<<<token"); // Закомментировано, так как token не используется
-
-  // Возвращаем JSX для рендеринга компонента
   return (
     <main className="">
       <main className="">

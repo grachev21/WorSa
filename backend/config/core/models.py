@@ -30,9 +30,6 @@ class UserWordsList(models.Model):
     timeUpdate = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return str(self.en)
-
 
 class Settings(models.Model):
     numberWordsDay = models.IntegerField()

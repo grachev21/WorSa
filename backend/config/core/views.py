@@ -1,23 +1,18 @@
 from rest_framework import generics, viewsets, mixins
 from rest_framework.views import APIView
-# from rest_framework.viewsets import GenericViewSet
 from rest_framework.decorators import action
 from rest_framework import status
 from rest_framework.response import Response
-# from rest_framework.permissions import    
 from rest_framework.pagination import PageNumberPagination
 
-from core.models import WordsList, Categories, Settings
-from .serializers import WordsListSerializer, SettingsSerializer
-from .services import SettingsService
+from core.models import WordsList, Settings, UserWordsList
+from .serializers import WordsListSerializer, SettingsSerializer, UserWordsListSerializer
 
 from .permissions import IsOwnerAndAuthenticated
 
 
 class AppAPIListPagination(PageNumberPagination):
     page_size = 50
-    # page_size_query_param = 'page_size'
-    # max_page_size = 10000
 
 class SettingsSet(viewsets.ModelViewSet):
     queryset = Settings.objects.all()
@@ -30,6 +25,51 @@ class SettingsSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
     
+    def create(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        if queryset.exists():
+            settings = queryset.first()
+            serializer = self.get_serializer(settings, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save(user=self.request.user)
+            return Response(serializer.data)
+        else:
+            return Response({"detail": "Settings record does not exist."},
+                            status=status.HTTP_400_BAD_REQUEST)
+    
+# class UserWordsListSet(viewsets.ModelViewSet):
+#     queryset = UserWordsList.objects.all()
+#     serializer_class = UserWordsListSerializer
+#     permission_classes = [IsOwnerAndAuthenticated]
+
+#     def get_queryset(self):
+#         return UserWordsList.objects.filter(user=self.request.user)
+
+#     def perform_create(self, serializer):
+#         serializer.save(user=self.request.user)
+
+#     def create(self, request, *args, **kwargs):
+#         print(self.get_queryset())
+
+
+class UserWordsListSet(APIView):
+
+    def post(self, request, *args, **kwargs):
+            serializer = UserWordsListSerializer(data=request.data)
+            if serializer.is_valid():
+                validated_data = serializer.validated_data
+                print(validated_data, "<")
+                return Response(validated_data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+
     # def list(self, request, *args, **kwargs):
     #     db = Settings.objects.select_related('user').filter(user=request.user)
     #     serializer = SettingsSerializer(db, many=True)
@@ -46,8 +86,6 @@ class SettingsSet(viewsets.ModelViewSet):
     #         return Response(serializer.data)
     #     else:
     #         return Response({"message": "User is anonymous"}, status=200)
-
-
 # class SettingsSet(APIView):
 #     permission_classes = [IsAuthenticated]
 

@@ -4,8 +4,7 @@ import { menu_list } from "../../data/ButtonMenuLIst";
 
 import ButtonTheme from "../ButtonTheme";
 import LogoImage from "../LogoImage";
-import InfoSlider from "./InfoSlider";
-// import ModalWindow from "../ModalWindow";
+import InfoSlider from "./components/InfoSlider";
 
 const SidePanel = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -20,35 +19,24 @@ const SidePanel = () => {
   };
 
   return (
-
     <div className="hidden w-14 h-full fixed md:flex flex-col justify-between top-0 left-0 bg-color_two z-50">
       <div className="w-full h-20 flex items-center justify-center">
         <LogoImage />
       </div>
       <div className="w-full max-h-72 ">
-        <NavLink to={menu_list[0].link}>
-          {({ isActive }) =>
-            <InfoSlider isActive={isActive} text={menu_list[0].title} img={menu_list[0].img} onChange={handleChange} />
-          }
-        </NavLink>
-        <InfoSlider text={menu_list[1].title} img={menu_list[1].img} onChange={handleChange} />
-        <NavLink to={menu_list[2].link}>
-          <InfoSlider text={menu_list[2].title} img={menu_list[2].img} button={false} onChange={handleChange} />
-        </NavLink>
-        <NavLink to={menu_list[3].link}>
-          <InfoSlider text={menu_list[3].title} img={menu_list[3].img} button={false} onChange={handleChange} />
-        </NavLink>
-        <NavLink to={menu_list[4].link}>
-          <InfoSlider text={menu_list[4].title} img={menu_list[4].img} button={false} onChange={handleChange} />
-        </NavLink>
-        <InfoSlider text={menu_list[5].title} img={menu_list[5].img} onChange={handleChange} button={true} />
+        {menu_list.map((value, index) => {
+          return (
+            <NavLink key={index} to={value.link}>
+              {({ isActive }) => <InfoSlider isActive={isActive} text={value.title} img={value.img} onChange={handleChange} button={false} />}
+            </NavLink>
+          );
+        })}
       </div>
-      <div >
-        <div >
+      <div>
+        <div>
           <ButtonTheme />
         </div>
       </div>
-      {/* <ModalWindow active={modalActive} setActive={setModalActive} /> */}
     </div>
   );
 };
