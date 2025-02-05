@@ -17,6 +17,7 @@ class SettingsSerializer(serializers.ModelSerializer):
         read_only_fields = ['user'] 
 
 class UserWordsListSerializer(serializers.Serializer):
+    name = serializers.CharField()
     text = serializers.CharField()
     minusTwo = serializers.BooleanField()
     minusTree = serializers.BooleanField()

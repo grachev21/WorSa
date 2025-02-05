@@ -9,6 +9,7 @@ from core.models import WordsList, Settings, UserWordsList
 from .serializers import WordsListSerializer, SettingsSerializer, UserWordsListSerializer
 
 from .permissions import IsOwnerAndAuthenticated
+from .services import create_dict
 
 
 class AppAPIListPagination(PageNumberPagination):
@@ -52,14 +53,20 @@ class SettingsSet(viewsets.ModelViewSet):
 #         print(self.get_queryset())
 
 
-class UserWordsListSet(APIView):
-
-    def post(self, request, *args, **kwargs):
+class UserWordsListSet(viewsets.ViewSet):
+    permission_classes = [IsOwnerAndAuthenticated]
+    def create(self, request, *args, **kwargs):
+            
             serializer = UserWordsListSerializer(data=request.data)
+            
+            # Проверка валидности данных
             if serializer.is_valid():
-                validated_data = serializer.validated_data
-                print(validated_data, "<")
-                return Response(validated_data, status=status.HTTP_200_OK)
+                # Сохранение данных в базу через service.py
+                # instance = save_to_database(serializer.validated_data, request.user)
+                create_dict(serializer.data)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            
+            # Возвращение ошибок в случае невалидных данных
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

@@ -22,12 +22,13 @@ class WordsList(models.Model):
 
 
 class UserWordsList(models.Model):
+    name = models.CharField(max_length=200)
     en = models.CharField(max_length=200)
     ru = models.CharField(max_length=200)
-    repetitions = models.IntegerField(verbose_name="количество повторов")
-    geeks_field = models.BooleanField(verbose_name="знаю или нет")
     timeCreate = models.DateTimeField(auto_now_add=True)
     timeUpdate = models.DateTimeField(auto_now=True)
+    audio = models.FileField(upload_to="audio/")
+    audioSlow = models.FileField(upload_to="audio/")
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 
