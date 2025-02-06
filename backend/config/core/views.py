@@ -6,10 +6,10 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 
 from core.models import WordsList, Settings, UserWordsList
-from .serializers import WordsListSerializer, SettingsSerializer, UserWordsListSerializer
+from .serializers import WordsListSerializer, SettingsSerializer, UserWordsListSerializer, ShowUserWordsListSerializer
 
 from .permissions import IsOwnerAndAuthenticated
-from .services import create_dict
+from .services import create_dict, cleaning_duplicates
 
 
 class AppAPIListPagination(PageNumberPagination):
@@ -58,20 +58,25 @@ class UserWordsListSet(viewsets.ViewSet):
     def create(self, request, *args, **kwargs):
             
             serializer = UserWordsListSerializer(data=request.data)
-            
+
             # Проверка валидности данных
             if serializer.is_valid():
                 # Сохранение данных в базу через service.py
                 # instance = save_to_database(serializer.validated_data, request.user)
-                create_dict(serializer.data)
+                create_dict(serializer.data, request.user)
+                cleaning_duplicates(request.user)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             
             # Возвращение ошибок в случае невалидных данных
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ShowUserWordsListSet(viewsets.ModelViewSet):
+    queryset = UserWordsList.objects.all()
+    serializer_class = ShowUserWordsListSerializer
+    # permission_classes = [IsOwnerAndAuthenticated]
 
-
-
+    def get_queryset(self):
+        return UserWordsList.objects.filter(user=self.request.user)
 
 
 

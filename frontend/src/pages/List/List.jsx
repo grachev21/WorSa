@@ -1,30 +1,36 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../utils/api";
 
 import AudioButton from "./pageComponents/AudioButton";
 
 const ItemList = () => {
-  const [items, setItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+
+  const [isList, setList] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/w1/WordsList/?page=${currentPage}`)
-      .then((response) => {
-        setItems(response.data.results);
-        setTotalPages(Math.ceil(response.data.count / 10)); // Предполагаем, что page_size = 10
-      })
-      .catch((error) => {
+    const fetchSettings = async () => {
+      try {
+        const response = await api.get("http://127.0.0.1:8000/api/v1/ShowUserWordsList/");
+        setList(response.data);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          setError("Settings not found");
+        } else {
+          setError("An error occurred while fetching the settings");
+        }
         console.error("There was an error fetching the items!", error);
-      });
-  }, [currentPage]);
+      }
+    };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    fetchSettings();
+  }, []);
 
-  console.log(items);
+  console.log(isList, "<<<");
+  // const handlePageChange = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
+
   return (
     <main className="flex flex-col justify-center mt-32">
       <section className="mx-4 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
@@ -47,7 +53,7 @@ const ItemList = () => {
               </tr>
             </thead>
             <tbody>
-              {items.map((item) => {
+              {isList.map((item) => {
                 return (
                   <tr key={item.id} className="bg-color_three border-b">
                     <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-color_four">

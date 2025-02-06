@@ -29,6 +29,8 @@ class UserWordsList(models.Model):
     timeUpdate = models.DateTimeField(auto_now=True)
     audio = models.FileField(upload_to="audio/")
     audioSlow = models.FileField(upload_to="audio/")
+    teached = models.BooleanField(default=False)
+    repeated = models.BooleanField(default=False)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 

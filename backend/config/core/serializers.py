@@ -27,3 +27,9 @@ class UserWordsListSerializer(serializers.Serializer):
         model = UserWordsList
         fields = '__all__'
         read_only_fields = ['user'] 
+
+class ShowUserWordsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserWordsList
+        fields = '__all__'
+        read_only_fields = ['user']

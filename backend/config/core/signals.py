@@ -1,8 +1,8 @@
-from django.db.models.signals import post_save 
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 
-from .models import CustomUser, Settings
+from .models import CustomUser, Settings, UserWordsList
 from core.middleware import get_current_user 
 
 User = get_user_model()
@@ -20,6 +20,15 @@ def user_created(sender, instance, created, **kwargs):
             voiceSpead=True,
             user=instance,
         )
+
+
+# @receiver(pre_save, sender=UserWordsList)
+# def dictionary_cleaning(sender, instance, **kwargs):
+#     print("create dict...")
+    # user=get_current_user()
+
+    # print(instance)
+    # for obj in UserWordsList.objects.select_related(user).all()
 
 
 

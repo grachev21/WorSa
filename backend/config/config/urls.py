@@ -9,6 +9,7 @@ router = routers.DefaultRouter()
 router.register(r'WordsList', WordsListSet)
 router.register(r'Settings', SettingsSet)
 router.register(r'UserWordsList', UserWordsListSet, basename='UserWordsList')
+router.register(r'ShowUserWordsList', ShowUserWordsListSet)
 
 
 urlpatterns = [
