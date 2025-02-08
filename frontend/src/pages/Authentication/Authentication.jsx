@@ -20,6 +20,8 @@ const Authentication = () => {
       console.log(response.data.auth_token, "<<<");
       localStorage.setItem('auth_token', response.data.auth_token);
 
+      navigate("/");
+
       setError('');
     } catch (error) {
       setError('Invalid email or password');

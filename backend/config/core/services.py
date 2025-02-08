@@ -27,7 +27,13 @@ def create_dict(data, user):
     for word in words:
         if WordsList.objects.filter(en=word).exists():
             objectj_db = WordsList.objects.get(en=word)
-            out_list.append({'name': data['name'], 'en': objectj_db.en, 'ru': objectj_db.ru, 'audio': objectj_db.audio, 'audioSlow': objectj_db.audioSlow })
+            out_list.append(
+                {'name': data['name'], 
+                 'en': objectj_db.en, 
+                 'ru': objectj_db.ru, 
+                 'audio': objectj_db.audio, 
+                  }
+                )
 
     
     for out in out_list:
@@ -36,7 +42,6 @@ def create_dict(data, user):
                 en=out['en'],
                 ru=out['ru'],
                 audio=out['audio'],
-                audioSlow=out['audioSlow'],
                 user=user,
         )
 

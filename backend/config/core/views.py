@@ -6,14 +6,15 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 
 from core.models import WordsList, Settings, UserWordsList
-from .serializers import WordsListSerializer, SettingsSerializer, UserWordsListSerializer, ShowUserWordsListSerializer
+from .serializers import WordsListSerializer, SettingsSerializer, CreateWordListSerializer, ShowUserWordsListSerializer
 
 from .permissions import IsOwnerAndAuthenticated
 from .services import create_dict, cleaning_duplicates
 
 
 class AppAPIListPagination(PageNumberPagination):
-    page_size = 50
+    page_size = 20
+    # max_page_size = 100
 
 class SettingsSet(viewsets.ModelViewSet):
     queryset = Settings.objects.all()
@@ -53,16 +54,14 @@ class SettingsSet(viewsets.ModelViewSet):
 #         print(self.get_queryset())
 
 
-class UserWordsListSet(viewsets.ViewSet):
+class CreateWordListSet(viewsets.ViewSet):
     permission_classes = [IsOwnerAndAuthenticated]
     def create(self, request, *args, **kwargs):
             
-            serializer = UserWordsListSerializer(data=request.data)
+            serializer = CreateWordListSerializer(data=request.data)
 
             # Проверка валидности данных
             if serializer.is_valid():
-                # Сохранение данных в базу через service.py
-                # instance = save_to_database(serializer.validated_data, request.user)
                 create_dict(serializer.data, request.user)
                 cleaning_duplicates(request.user)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -70,10 +69,12 @@ class UserWordsListSet(viewsets.ViewSet):
             # Возвращение ошибок в случае невалидных данных
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class ShowUserWordsListSet(viewsets.ModelViewSet):
     queryset = UserWordsList.objects.all()
     serializer_class = ShowUserWordsListSerializer
-    # permission_classes = [IsOwnerAndAuthenticated]
+    permission_classes = [IsOwnerAndAuthenticated]
+    pagination_class = AppAPIListPagination
 
     def get_queryset(self):
         return UserWordsList.objects.filter(user=self.request.user)

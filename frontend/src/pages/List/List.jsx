@@ -4,9 +4,8 @@ import api from "../../utils/api";
 import AudioButton from "./pageComponents/AudioButton";
 
 const ItemList = () => {
-
-  const [isList, setList] = useState({});
-  const [error, setError] = useState(null);
+  const [isList, setList] = useState([]);
+  const [error, setError] = useState([]);
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -27,13 +26,16 @@ const ItemList = () => {
   }, []);
 
   console.log(isList, "<<<");
+  console.log(isList.results, "<<<");
+  console.log(isList.count, "<<<");
   // const handlePageChange = (pageNumber) => {
   //   setCurrentPage(pageNumber);
   // };
 
   return (
     <main className="flex flex-col justify-center mt-32">
-      <section className="mx-4 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
+      <div className="text-color_four font-bold p-6">Общее количество слов: {isList.count}</div>
+      <section className="w-full">
         <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left rtl:text-right text-color_ten">
             <thead className="text-xs text-color_nine uppercase bg-color_eight">
@@ -45,27 +47,33 @@ const ItemList = () => {
                   Русский
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Category
+                  Статус
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Price
+                  Повторы
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Озвучка
                 </th>
               </tr>
             </thead>
             <tbody>
-              {isList.map((item) => {
+              {isList.results.map((item) => {
                 return (
                   <tr key={item.id} className="bg-color_three border-b">
                     <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-color_four">
                       {item.en}
                     </th>
                     <td className="px-6 py-4">{item.ru}</td>
-                    <td className="px-6 py-4">{item.ru}</td>
-                    <td className="px-6 py-4">{item.ru}</td>
+                    <td className={`px-6 font-bold py-4 ${item.teached ? "text-color_nine" : "text-color_six"}`}>
+                      {item.teached ? "Выучил" : "Неизвестно"}
+                    </td>
+                    <td className={`px-6 font-bold py-4 ${item.repeated ? "text-color_nine" : "text-color_six"}`}>
+                      {item.repeated ? "Повторил" : "Не повторил"}
+                    </td>
                     <td className="px-6 py-4">
                       <AudioButton audio_word={item.audio} />
                     </td>
-                    {/* <td className="px-6 py-4">{value.categories}</td> */}
                   </tr>
                 );
               })}

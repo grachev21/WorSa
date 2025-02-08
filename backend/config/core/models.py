@@ -14,7 +14,6 @@ class WordsList(models.Model):
     timeCreate = models.DateTimeField(auto_now_add=True)
     timeUpdate = models.DateTimeField(auto_now=True)
     audio = models.FileField(upload_to="audio/")
-    audioSlow = models.FileField(upload_to="audio/")
     categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -28,7 +27,6 @@ class UserWordsList(models.Model):
     timeCreate = models.DateTimeField(auto_now_add=True)
     timeUpdate = models.DateTimeField(auto_now=True)
     audio = models.FileField(upload_to="audio/")
-    audioSlow = models.FileField(upload_to="audio/")
     teached = models.BooleanField(default=False)
     repeated = models.BooleanField(default=False)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

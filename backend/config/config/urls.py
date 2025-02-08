@@ -8,15 +8,13 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'WordsList', WordsListSet)
 router.register(r'Settings', SettingsSet)
-router.register(r'UserWordsList', UserWordsListSet, basename='UserWordsList')
+router.register(r'CreateWordListSet', CreateWordListSet, basename='CreateWordListSet')
 router.register(r'ShowUserWordsList', ShowUserWordsListSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),
-
-    # path('api/v1/UserWordsList/', UserWordsListSet.as_view(), name='UserWordsList'),
 
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),

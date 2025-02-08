@@ -1,11 +1,14 @@
 import Input from "../components/Input";
 import ButtonInput from "../components/ButtonInput";
 import api from "../utils/api";
+import { useNavigate } from "react-router-dom";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const CreateDict = () => {
+  const navigate = useNavigate();
+
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required("Обязательное поле"),
     minusTwo: Yup.bool().oneOf([true, false], "Поле обязательно для заполнения"),
@@ -27,13 +30,13 @@ const CreateDict = () => {
       enableReinitialize={true}
       onSubmit={async (values, { setSubmitting }) => {
         try {
-          const response = await api.post("/v1/UserWordsList/", values);
+          const response = await api.post("http://127.0.0.1:8000/api/v1/CreateWordListSet/", values);
           console.log(response.data);
         } catch (error) {
           console.error("Ошибка при выполнении запроса:", error);
         } finally {
           setSubmitting(false);
-          // window.location.reload();
+          navigate("/list");
         }
       }}>
       {({ isSubmitting }) => (
@@ -74,7 +77,10 @@ const CreateDict = () => {
               <label htmlFor="text" className="block text-color_four font-medium mb-2">
                 Вставте текст из которого вы хотите сделать словарь
               </label>
-              <Field name="text" className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-color_five"></Field>
+              <Field
+                as="textarea"
+                name="text"
+                className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-color_five"></Field>
             </div>
             <div>
               <button disabled={isSubmitting} type="submit" className="bg-color_six text-color_four px-4 py-2 rounded-lg hover:opacity-85">
