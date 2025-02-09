@@ -25,7 +25,7 @@ const App = () => {
         <Header />
         <SidePanel />
         <div className="flex flex-col justify-center mt-32">
-          <div className="mx-4 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
+          <div className="my-28 sm:mx-20 lg:mx-48 xl:mx-52 2xl:mx-56">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/createdict" element={<CreateDict />} />

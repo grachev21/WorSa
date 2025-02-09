@@ -1,11 +1,9 @@
-import inflect
 from .models import WordsList, UserWordsList 
 
 
 def create_dict(data, user):
 
     def dictionary_option(data, words):
-        p = inflect.engine()
         result = []
         for word in words:
             if data['minusTwo'] and len(word) == 1:
