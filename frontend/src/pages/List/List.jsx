@@ -5,11 +5,17 @@ import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 
 import AudioButton from "./pageComponents/AudioButton";
 import Load from "./pageComponents/Load";
+import Paginator from "./pageComponents/Paginator";
 
 const ItemList = () => {
   const [items, setItems] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const arrayPagination = Array.from({ length: 6 }, (v, i) => i);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   // Get request
   useEffect(() => {
@@ -19,8 +25,9 @@ const ItemList = () => {
           params: { page: currentPage },
         });
         if (response.data && response.data.results) {
-          setItems(response.data.results);
-          setTotalPages(Math.ceil(response.data.count / 10)); // Предполагается, что PAGE_SIZE = 10
+          setItems(response.data);
+          setTotalPages(Math.ceil(response.data.count / 20)); // Предполагается, что PAGE_SIZE = 10
+          // setListPages(Array(totalPages).fill(0).map((_, index) => index))
         } else {
           console.error("Неожиданная структура данных:", response.data);
         }
@@ -31,9 +38,9 @@ const ItemList = () => {
     fetchSettings();
   }, [currentPage]);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  console.log(totalPages, "total pages");
+  console.log(currentPage, "current page");
+  console.log(items, "items");
 
   return (
     <main className="flex flex-col justify-center">
@@ -65,7 +72,7 @@ const ItemList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {items.map((item) => {
+                  {items.results.map((item) => {
                     return (
                       <tr key={item.id} className="bg-color_three border-b">
                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-color_four">
@@ -87,38 +94,10 @@ const ItemList = () => {
                 </tbody>
               </table>
             </div>
-
-            <nav className="mb-4 flex justify-center space-x-4" aria-label="Pagination">
-              <span
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="rounded-lg border border-teal-500 px-2 py-2 text-gray-700">
-                <span className="sr-only">Previous</span>
-                <MdNavigateBefore size={24} color="white" />
-              </span>
-
-              <span className="rounded-lg border border-teal-500 bg-teal-500 px-4 py-2 text-white">1</span>
-
-              <a className="rounded-lg border border-teal-500 px-4 py-2 text-gray-700" href="/page/2">
-                2
-              </a>
-
-              <a className="rounded-lg border border-teal-500 px-4 py-2 text-gray-700" href="/page/3">
-                3
-              </a>
-
-              <span
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={`rounded-lg border border-teal-500 px-2 py-2 text-gray-700`}
-                href="/page/2">
-                <span className="sr-only">Next</span>
-                <MdNavigateNext size={24} color="white" />
-              </span>
-            </nav>
           </section>
         </div>
       )}
+      <Paginator currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
     </main>
   );
 };
