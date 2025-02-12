@@ -14,7 +14,7 @@ from .services import create_dict, cleaning_duplicates
 
 class AppAPIListPagination(PageNumberPagination):
     page_size = 20
-    # max_page_size = 100
+    max_page_size = 10
 
 class SettingsSet(viewsets.ModelViewSet):
     queryset = Settings.objects.all()
